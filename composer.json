@@ -1,0 +1,21 @@
+{
+    "name": "zero-24/lorawan-map-app",
+    "type": "project",
+    "description": "zero-24 DRK LoRaWAN Map App",
+    "homepage": "https://github.com/zero-24/lorawan-map-app",
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.4.0"
+        }
+    },
+    "require": {
+        "joomla/http": "~1.3",
+        "joomla/input": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "zero24\\Helper\\": "src/"
+        }
+    }
+}

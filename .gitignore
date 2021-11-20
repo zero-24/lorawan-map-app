@@ -1,0 +1,12 @@
+# Ignore access data file
+/etc/constants.php
+
+# Ignore composer files folder
+/vendor/
+composer.lock
+
+# Ignore local data files
+/data/
+!/data/.gitkeep
+
+
