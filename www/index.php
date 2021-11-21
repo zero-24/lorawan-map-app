@@ -48,7 +48,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 <html>
     <head>
         <title>DRK Troisdorf Einsatztracker Map</title>
-        <meta http-equiv="refresh" content="5">
+        <!--<meta http-equiv="refresh" content="5">-->
         <link rel="stylesheet" href="media/css/leaflet.css" />
         <link rel="stylesheet" href="media/css/app.css" />
         <script src="media/js/leaflet.js"></script>
