@@ -13,11 +13,17 @@ The data of the LoRaWAN Trackers get passed to the "uplink.php" file which store
 - Run `git clone https://github.com/zero-24/lorawan-map-app.git .` inside the folder
 - Point your domain to the `www` folder
 - `cp etc/constants.dist.php etc/constants.php`
-- `nano constants.dist.php` -> Setup the secret and the sitename
+- `nano etc/constants.php` -> Setup the constants within this file
 - `composer install --no-dev`
-- Create within "The Things Network" an webhook to the uplink.php (Integrations -> Webhooks -> Add webhook -> custom webhook)
+- Create within "The Things Network" an webhook to the uplink.php (Integrations -> Webhooks -> Add webhook -> Custom Webhook)
 - Set the secret from the constants.php in the webhook config `uplink.php?uplink_secret=<your-secret>`
 - Save the webhook and let the data come
+
+## Optional Setup
+### Custom Favicon
+
+- Create a favicon package using [Favicon Generator. For real.](https://realfavicongenerator.net/)
+- place the files from the download into the `www` folder
 
 ## Special Thanks
 

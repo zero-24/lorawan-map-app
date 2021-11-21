@@ -16,3 +16,6 @@ define('SITE_TITLE', '');
 
 // The site secret to be passed to be allowed to access the page
 define('SITE_SECRET', '');
+
+// Change the robots options
+define('SITE_ROBOTS', 'noindex, nofollow');

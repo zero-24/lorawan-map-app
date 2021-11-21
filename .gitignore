@@ -9,4 +9,14 @@ composer.lock
 /data/
 !/data/.gitkeep
 
+## Ignore local favicons
+www/android-chrome-96x96.png
+www/apple-touch-icon.png
+www/browserconfig.xml
+www/favicon.ico
+www/favicon-16x16.png
+www/favicon-32x32.png
+www/mstile-150x150.png
+www/safari-pinned-tab.svg
+www/site.webmanifest
 
