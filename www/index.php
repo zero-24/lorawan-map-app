@@ -19,27 +19,12 @@ foreach ($gpsData as $gpsPoint)
 	{
 		if ($textMapping['device_id'] === $gpsPoint['device_id'])
 		{
-			$markers[] = [$gpsPoint['latitude'], $gpsPoint['longitude'], $textMapping['title']];
+			$markers[] = [$gpsPoint['latitude'], $gpsPoint['longitude'], '<b>' . $textMapping['title'] . '</b><br>' . $textMapping['longtext']];
 			continue;
 		}
 	}
 }
 
-/* Dummy Daten
-$markers = [
-    [50.807029, 7.134106, "Big Ben"],
-    [50.808024, 7.134209, "London Eye"],
-    [50.809024, 7.134509, "Nelson's Column<br><a href=\"https://en.wikipedia.org/wiki/Nelson's_Column\">wp</a>"]
-];
-
-$points = [
-    [50.807029, 7.134106],
-    [50.808024, 7.134209],
-    [50.809024, 7.134509]
-];
-
-exit;
-*/
 $cspnonce = base64_encode(bin2hex(random_bytes(64)));
 header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' https://*.openstreetmap.org")
 
