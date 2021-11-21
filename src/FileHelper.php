@@ -66,6 +66,6 @@ class FileHelper
 			unlink($file);
 		}
 
-		return file_put_contents($file, json_encode($json));
+		return file_put_contents($file, $json);
 	}
 }
