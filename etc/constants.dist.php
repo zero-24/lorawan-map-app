@@ -10,3 +10,6 @@ define('ROOT_PATH', dirname(__DIR__));
 
 // The secret to be passed by the remote server
 define('UPLINK_SECRET', '');
+
+// The site title to be shown on the page
+define('SITE_TITLE', '');
