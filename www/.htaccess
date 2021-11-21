@@ -1,0 +1,21 @@
+##
+# .htaccess file
+#
+# @copyright  Copyright (C) 2021 Tobias Zulauf. All rights reserved.
+# @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
+##
+
+# ======= Set basic security header =======
+
+<IfModule mod_headers.c>
+	# X-Frame-Options
+	Header always set X-Frame-Options DENY
+	# X-Content-Type nosniff
+	Header always set X-Content-Type-Options nosniff
+	# Referrer Policy
+	Header always set Referrer-Policy "no-referrer"
+	# Strict-Transport-Security
+	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	# Cross-Origin-Opener-Policy
+	Header always set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
