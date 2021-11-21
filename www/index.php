@@ -8,6 +8,11 @@
 
 include '../includes/app.php';
 
+if ($input->getString('site_secret', false) !== SITE_SECRET)
+{
+	exit;
+}
+
 $gpsData = $fileHelper->readJsonFile('gps_data');
 $textMappings = $fileHelper->readJsonFile('text_mapping');
 

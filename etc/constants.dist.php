@@ -13,3 +13,6 @@ define('UPLINK_SECRET', '');
 
 // The site title to be shown on the page
 define('SITE_TITLE', '');
+
+// The site secret to be passed to be allowed to access the page
+define('SITE_SECRET', '');
