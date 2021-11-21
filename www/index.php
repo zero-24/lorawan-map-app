@@ -49,9 +49,9 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
     <head>
         <title>DRK Troisdorf Einsatztracker Map</title>
         <meta http-equiv="refresh" content="5">
-        <link rel="stylesheet" href="../assets/css/leaflet.css" />
-        <link rel="stylesheet" href="../assets/css/app.css" />
-        <script src="../assets/js/leaflet.js"></script>
+        <link rel="stylesheet" href="media/css/leaflet.css" />
+        <link rel="stylesheet" href="media/css/app.css" />
+        <script src="media/js/leaflet.js"></script>
         <script language="javascript" nonce="<?php echo $cspnonce; ?>">
             window.addEventListener(
                 'DOMContentLoaded',
