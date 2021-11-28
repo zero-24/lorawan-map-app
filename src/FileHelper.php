@@ -9,7 +9,7 @@
 namespace zero24\Helper;
 
 /**
- * Class for zway
+ * Class for FileHelper
  *
  * @since  1.0
  */

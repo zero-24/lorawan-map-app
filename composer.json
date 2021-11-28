@@ -10,7 +10,6 @@
         }
     },
     "require": {
-        "joomla/http": "~1.3",
         "joomla/input": "~2.0"
     },
     "autoload": {
