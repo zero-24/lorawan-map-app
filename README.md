@@ -27,4 +27,4 @@ The data of the LoRaWAN Trackers get passed to the "uplink.php" file which store
 
 ## Special Thanks
 
-[Alex @ AEQ-WEB](https://www.aeq-web.com/) & René Wildemann
+[Alex @ AEQ-WEB](https://www.aeq-web.com/) & [Reno989](https://github.com/Reno989)
