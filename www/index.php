@@ -30,7 +30,6 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 <html>
 	<head>
 		<title><?php echo SITE_TITLE; ?></title>
-		<!--<meta http-equiv="refresh" content="5">-->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="<?php echo SITE_ROBOTS; ?>">
 		<meta http-equiv="x-ua-compatible" content="IE=edge">
