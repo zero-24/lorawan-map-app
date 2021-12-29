@@ -20,7 +20,7 @@ $currentGpsData = $fileHelper->readJsonFile('gps_data');
 $dataUplinkMessages = (array) $input->json->get('uplink_message', array());
 $dataDevice = (array) $input->json->get('end_device_ids', array());
 
-// loop through the current data
+// Loop through the current data
 foreach ($currentGpsData as $currentGpsPoint)
 {
 	if ($currentGpsPoint['device_id'] !== $dataDevice['device_id'])
