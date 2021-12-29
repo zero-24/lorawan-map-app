@@ -66,8 +66,9 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 					function updateMarkers()
 					{
 						var xhr = new XMLHttpRequest();
-						xhr.open('GET', 'api/makers.php?api_token=<?php echo API_TOKEN; ?>', true);
+						xhr.open('GET', 'api/makers.php', true);
 						xhr.setRequestHeader('Content-Type', 'application/json');
+						xhr.setRequestHeader('api-token', '<?php echo API_TOKEN; ?>');
 
 						xhr.onload = function()
 						{

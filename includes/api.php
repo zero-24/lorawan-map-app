@@ -16,10 +16,7 @@ if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
 
 require ROOT_PATH . '/vendor/autoload.php';
 
-use Joomla\Input;
 use zero24\Helper\FileHelper;
-
-$input = new Input\Input;
 
 // Setup the FileHelper
 $fileHelper = new FileHelper([

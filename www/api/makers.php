@@ -8,7 +8,7 @@
 
 include '../../includes/api.php';
 
-if ($input->getString('api_token', false) !== API_TOKEN)
+if (getallheaders()['api_token'] !== API_TOKEN)
 {
 	exit;
 }
