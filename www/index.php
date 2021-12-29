@@ -58,59 +58,63 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
 					map.fitBounds(<?php echo json_encode($points); ?>);
 
-					window.setInterval(
-						function() {
-							var xhr = new XMLHttpRequest();
-							xhr.open('GET', 'api/makers.php', true);
-							xhr.setRequestHeader('Content-Type', 'application/json');
+					function updateMarkers()
+					{
+						var xhr = new XMLHttpRequest();
+						xhr.open('GET', 'api/makers.php', true);
+						xhr.setRequestHeader('Content-Type', 'application/json');
 
-							xhr.onload = function()
+						xhr.onload = function()
+						{
+							if (this.status >= 200 && this.status < 400)
 							{
-								if (this.status >= 200 && this.status < 400)
-								{
-									// Success! -> Take the response as markers
-									var markers = JSON.parse(this.response);
+								// Success! -> Take the response as markers
+								var markers = JSON.parse(this.response);
 
-									// Remove the existing device layers
-									map.eachLayer(function(layer) {
-										if (layer.hasOwnProperty('device_id'))
-										{
-											map.removeLayer(layer);
-										}
-									});
-
-									// Loop through the markers array
-									for (var i = 0; i < markers.length; i++)
+								// Remove the existing device layers
+								map.eachLayer(function(layer) {
+									if (layer.hasOwnProperty('device_id'))
 									{
-										var deviceId = markers[i][0];
-										var lat = markers[i][1];
-										var lon = markers[i][2];
-										var popupText = markers[i][3];
-										var markerLocation = new L.LatLng(lat, lon);
-										var marker = new L.Marker(markerLocation);
-
-										marker.device_id = deviceId;
-										map.addLayer(marker);
-										marker.bindPopup(popupText);
+										map.removeLayer(layer);
 									}
-								}
-								else
-								{
-									console.log('Could not load the makers api endpoint');
-									return;
-								}
-							};
+								});
 
-							xhr.onerror = function()
+								// Loop through the markers array
+								for (var i = 0; i < markers.length; i++)
+								{
+									var deviceId = markers[i][0];
+									var lat = markers[i][1];
+									var lon = markers[i][2];
+									var popupText = markers[i][3];
+									var markerLocation = new L.LatLng(lat, lon);
+									var marker = new L.Marker(markerLocation);
+
+									marker.device_id = deviceId;
+									map.addLayer(marker);
+									marker.bindPopup(popupText);
+								}
+							}
+							else
 							{
 								console.log('Could not load the makers api endpoint');
 								return;
-							};
+							}
+						};
 
-							xhr.send();
-						},
-						<?php echo $markerRefresh; ?>
-					);
+						xhr.onerror = function()
+						{
+							console.log('Could not load the makers api endpoint');
+							return;
+						};
+
+						xhr.send();
+					}
+
+					// Set the inital markers
+					updateMarkers()
+
+					// Update the markers every said seconds
+					window.setInterval(updateMarkers, <?php echo $markerRefresh; ?>);
 				},
 				false
 			);
