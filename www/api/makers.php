@@ -17,7 +17,13 @@ foreach ($gpsData as $gpsPoint)
 	{
 		if ($textMapping['device_id'] === $gpsPoint['device_id'])
 		{
-			$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], '<b>' . $textMapping['title'] . '</b><br>' . $textMapping['longtext'] . '<br><smal>Last Update: ' . $gpsPoint['time'] . '</smal>'];
+			$popupText = MARKER_POPUP_TEXT_TEMPLATE;
+			$popupText = str_replace('{title}', $textMapping['title'], $popupText);
+			$popupText = str_replace('{longtext}', $textMapping['longtext'], $popupText);
+			$popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
+			$popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
+
+			$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText];
 			continue;
 		}
 	}

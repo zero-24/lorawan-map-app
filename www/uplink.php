@@ -38,7 +38,8 @@ foreach ($dataUplinkMessages['decoded_payload'] as $key => $value)
 	$tracker->$key = $value;
 }
 
-$tracker->time = date("d-m-Y H:i:s");
+$tracker->date = date("d-m-Y");
+$tracker->time = date("H:i:s");
 $tracker->device_id = $dataDevice['device_id'];
 
 // Append the new / updated tracker data to the array

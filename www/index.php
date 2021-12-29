@@ -20,6 +20,9 @@ foreach ($gpsData as $gpsPoint)
 	$points[] = [$gpsPoint['latitude'], $gpsPoint['longitude']];
 }
 
+// Calculate the resfresh time for the markers
+$markerRefresh = MARKER_REFRESH_SECONDS * 1000;
+
 $cspnonce = base64_encode(bin2hex(random_bytes(64)));
 header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' https://*.openstreetmap.org")
 
@@ -106,7 +109,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
 							xhr.send();
 						},
-						2000
+						<?php echo $markerRefresh; ?>
 					);
 				},
 				false
