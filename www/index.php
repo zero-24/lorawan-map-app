@@ -77,7 +77,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 									});
 
 									// Loop through the markers array
-									for (var i=0; i < markers.length; i++)
+									for (var i = 0; i < markers.length; i++)
 									{
 										var deviceId = markers[i][0];
 										var lat = markers[i][1];
