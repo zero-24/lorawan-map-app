@@ -17,7 +17,7 @@ foreach ($gpsData as $gpsPoint)
 	{
 		if ($textMapping['device_id'] === $gpsPoint['device_id'])
 		{
-			$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], '<b>' . $textMapping['title'] . '</b><br>' . $textMapping['longtext']] . '<br><smal>Last Update: ' . $gpsPoint['time'] . '</smal>';
+			$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], '<b>' . $textMapping['title'] . '</b><br>' . $textMapping['longtext'] . '<br><smal>Last Update: ' . $gpsPoint['time'] . '</smal>'];
 			continue;
 		}
 	}
