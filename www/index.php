@@ -55,12 +55,18 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 						maxZoom: 18
 					}).addTo(map);
 
+					// Focus on the the inital set of points
 					map.fitBounds(<?php echo json_encode($points); ?>);
 
+					/**
+					* Calls the markers api endpoint and sets based on that result the markers on the page
+					*
+					* @return {void}
+					*/
 					function updateMarkers()
 					{
 						var xhr = new XMLHttpRequest();
-						xhr.open('GET', 'api/makers.php', true);
+						xhr.open('GET', 'api/makers.php?api_token=<?php echo API_TOKEN; ?>', true);
 						xhr.setRequestHeader('Content-Type', 'application/json');
 
 						xhr.onload = function()

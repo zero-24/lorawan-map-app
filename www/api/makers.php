@@ -8,6 +8,11 @@
 
 include '../../includes/api.php';
 
+if ($input->getString('api_token', false) !== API_TOKEN)
+{
+	exit;
+}
+
 $gpsData = $fileHelper->readJsonFile('gps_data');
 $textMappings = $fileHelper->readJsonFile('text_mapping');
 

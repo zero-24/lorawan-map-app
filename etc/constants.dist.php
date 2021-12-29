@@ -11,11 +11,14 @@ define('ROOT_PATH', dirname(__DIR__));
 // The secret to be passed by the remote server
 define('UPLINK_SECRET', '');
 
-// The site title to be shown on the page
-define('SITE_TITLE', '');
-
 // The site secret to be passed to be allowed to access the page
 define('SITE_SECRET', '');
+
+// The api token to be passed to the api endpoints
+define('API_TOKEN', '');
+
+// The site title to be shown on the page
+define('SITE_TITLE', '');
 
 // Change the robots options
 define('SITE_ROBOTS', 'noindex, nofollow');
