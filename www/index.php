@@ -14,20 +14,10 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
 }
 
 $gpsData = $fileHelper->readJsonFile('gps_data');
-$textMappings = $fileHelper->readJsonFile('text_mapping');
 
 foreach ($gpsData as $gpsPoint)
 {
 	$points[] = [$gpsPoint['latitude'], $gpsPoint['longitude']];
-
-	foreach ($textMappings as $textMapping)
-	{
-		if ($textMapping['device_id'] === $gpsPoint['device_id'])
-		{
-			$markers[] = [$gpsPoint['latitude'], $gpsPoint['longitude'], '<b>' . $textMapping['title'] . '</b><br>' . $textMapping['longtext']];
-			continue;
-		}
-	}
 }
 
 $cspnonce = base64_encode(bin2hex(random_bytes(64)));
@@ -65,21 +55,59 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
 					map.fitBounds(<?php echo json_encode($points); ?>);
 
-					// Define the markers
-					var markers = <?php echo json_encode($markers); ?>;
+					window.setInterval(
+						function() {
+							var xhr = new XMLHttpRequest();
+							xhr.open('GET', 'api/makers.php', true);
+							xhr.setRequestHeader('Content-Type', 'application/json');
 
-					// Loop through the markers array
-					for (var i=0; i < markers.length; i++)
-					{
-						var lat = markers[i][0];
-						var lon = markers[i][1];
-						var popupText = markers[i][2];
+							xhr.onload = function()
+							{
+								if (this.status >= 200 && this.status < 400)
+								{
+									// Success! -> Take the response as markers
+									var markers = JSON.parse(this.response);
 
-						var markerLocation = new L.LatLng(lat, lon);
-						var marker = new L.Marker(markerLocation);
-						map.addLayer(marker);
-						marker.bindPopup(popupText);
-					}
+									// Remove the existing device layers
+									map.eachLayer(function(layer) {
+										if (layer.hasOwnProperty('device_id'))
+										{
+											map.removeLayer(layer);
+										}
+									});
+
+									// Loop through the markers array
+									for (var i=0; i < markers.length; i++)
+									{
+										var deviceId = markers[i][0];
+										var lat = markers[i][1];
+										var lon = markers[i][2];
+										var popupText = markers[i][3];
+										var markerLocation = new L.LatLng(lat, lon);
+										var marker = new L.Marker(markerLocation);
+
+										marker.device_id = deviceId;
+										map.addLayer(marker);
+										marker.bindPopup(popupText);
+									}
+								}
+								else
+								{
+									console.log('Could not load the makers api endpoint');
+									return;
+								}
+							};
+
+							xhr.onerror = function()
+							{
+								console.log('Could not load the makers api endpoint');
+								return;
+							};
+
+							xhr.send();
+						},
+						2000
+					);
 				},
 				false
 			);
