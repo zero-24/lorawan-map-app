@@ -35,5 +35,5 @@ foreach ($gpsData as $gpsPoint)
 }
 
 // Output the json
-header('Content-Type: application/json');
+header('content-type: application/json');
 echo json_encode($markers);
