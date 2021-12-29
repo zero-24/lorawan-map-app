@@ -8,7 +8,7 @@
 
 include '../../includes/api.php';
 
-if (getallheaders()['api-token'] !== API_TOKEN)
+if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKEN)
 {
 	exit;
 }
