@@ -27,4 +27,4 @@ define('SITE_ROBOTS', 'noindex, nofollow');
 define('MARKER_REFRESH_SECONDS', 5);
 
 // The text template to be displayed in the popup
-define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{longtext}<br><small>Last Update:{date} {time}</small>');
+define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{longtext}<br><small>Last Updated: {date} {time}</small>');
