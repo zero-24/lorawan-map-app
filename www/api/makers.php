@@ -18,20 +18,35 @@ $textMappings = $fileHelper->readJsonFile('text_mapping');
 
 foreach ($gpsData as $gpsPoint)
 {
+	$mappingFound = false;
+
+	$popupText = MARKER_POPUP_TEXT_TEMPLATE;
+	$popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
+	$popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
+
 	foreach ($textMappings as $textMapping)
 	{
 		if ($textMapping['device_id'] === $gpsPoint['device_id'])
 		{
-			$popupText = MARKER_POPUP_TEXT_TEMPLATE;
+			$mappingFound = true;
+
 			$popupText = str_replace('{title}', $textMapping['title'], $popupText);
 			$popupText = str_replace('{longtext}', $textMapping['longtext'], $popupText);
-			$popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
-			$popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
 
-			$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText];
 			continue;
 		}
 	}
+
+	if (!$mappingFound)
+	{
+		$popupText = str_replace('{title}', 'No data in the text_mapping.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
+		$popupText = str_replace('{longtext}', 'No data in the text_mapping.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
+		$popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
+		$popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
+	}
+
+	// Add markers to the return array
+	$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText];
 }
 
 // Output the json
