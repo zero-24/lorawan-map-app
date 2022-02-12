@@ -42,6 +42,12 @@ $tracker->date = date("d-m-Y");
 $tracker->time = date("H:i:s");
 $tracker->device_id = $dataDevice['device_id'];
 
+// We do not have any latitude nor longitude values -> we can not use that update
+if (!isset($tracker->latitude) || !isset($tracker->longitude))
+{
+	return;
+}
+
 // Append the new / updated tracker data to the array
 $gpsData[] = $tracker;
 
