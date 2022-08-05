@@ -26,5 +26,8 @@ define('SITE_ROBOTS', 'noindex, nofollow');
 // The seconds how often the markers should be updated
 define('MARKER_REFRESH_SECONDS', 5);
 
+// The grace time when the marker should get red (usage https://www.php.net/manual/en/dateinterval.createfromdatestring.php)
+define('MARKER_GRACE_TIME', '90 seconds');
+
 // The text template to be displayed in the popup
 define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{longtext}<br><small>Last Updated: {date} {time}</small>');

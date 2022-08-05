@@ -51,11 +51,11 @@ foreach ($gpsData as $gpsPoint)
 	$gpsTime = new DateTime($gpsPoint['date'] . ' ' . $gpsPoint['time']);
 	$nowTime = new DateTime();
 
-	// Set substract from "now" 60 seconds to allow 60 seconds of grace time
-	$nowBefore60seconds = $nowTime->sub(date_interval_create_from_date_string('60 seconds'));
+	// Substract from "now" the configured grace time
+	$nowSubGracetime = $nowTime->sub(date_interval_create_from_date_string(MARKER_GRACE_TIME));
 
 	// Compare the timestamps whether the gps time is within the grace time
-	if ($gpsTime->getTimestamp() < $nowBefore60seconds->getTimestamp())
+	if ($gpsTime->getTimestamp() < $nowSubGracetime->getTimestamp())
 	{
 		// Make the icon red when the time has been exceeded
 		$icon = 'red';
