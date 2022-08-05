@@ -88,12 +88,39 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 								// Loop through the markers array
 								for (var i = 0; i < markers.length; i++)
 								{
+									var blueIcon = new L.Icon({
+										iconUrl: 'media/css/images/marker-icon-2x.png',
+										shadowUrl: 'media/css/images/marker-shadow.png',
+										iconSize: [25, 41],
+										iconAnchor: [12, 41],
+										popupAnchor: [1, -34],
+										shadowSize: [41, 41]
+									});
+
+									var redIcon = new L.Icon({
+										iconUrl: 'media/css/images/marker-icon-2x-red.png',
+										shadowUrl: 'media/css/images/marker-shadow.png',
+										iconSize: [25, 41],
+										iconAnchor: [12, 41],
+										popupAnchor: [1, -34],
+										shadowSize: [41, 41]
+									});
+
+									var icon = blueIcon;
+									var markersIcon = markers[i][4];
+
+									// icon
+									if (markersIcon == 'red')
+									{
+										icon = redIcon;
+									}
+
 									var deviceId = markers[i][0];
 									var lat = markers[i][1];
 									var lon = markers[i][2];
 									var popupText = markers[i][3];
 									var markerLocation = new L.LatLng(lat, lon);
-									var marker = new L.Marker(markerLocation);
+									var marker = new L.Marker(markerLocation, {icon: icon});
 
 									marker.device_id = deviceId;
 									map.addLayer(marker);

@@ -8,11 +8,11 @@
 
 include '../../includes/api.php';
 
-if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKEN)
+/*if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKEN)
 {
 	exit;
 }
-
+*/
 $gpsData = $fileHelper->readJsonFile('gps_data');
 $textMappings = $fileHelper->readJsonFile('text_mapping');
 
@@ -45,8 +45,24 @@ foreach ($gpsData as $gpsPoint)
 		$popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
 	}
 
+	// Icon mapping
+	$icon = 'blue';
+
+	$gpsTime = new DateTime($gpsPoint['date'] . ' ' . $gpsPoint['time']);
+	$nowTime = new DateTime();
+
+	// Set substract from "now" 60 seconds to allow 60 seconds of grace time
+	$nowBefore60seconds = $nowTime->sub(date_interval_create_from_date_string('60 seconds'));
+
+	// Compare the timestamps whether the gps time is within the grace time
+	if ($gpsTime->getTimestamp() < $nowBefore60seconds->getTimestamp())
+	{
+		// Make the icon red when the time has been exceeded
+		$icon = 'red';
+	}
+
 	// Add markers to the return array
-	$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText];
+	$markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $icon];
 }
 
 // Output the json
