@@ -76,11 +76,16 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 							{
 								// Success! -> Take the response as markers
 								var markers = JSON.parse(this.response);
+								var openDeviceId = '';
 
 								// Remove the existing device layers
 								map.eachLayer(function(layer) {
 									if (layer.hasOwnProperty('device_id'))
 									{
+										if (layer.isPopupOpen())
+										{
+											openDeviceId = layer.device_id;
+										}
 										map.removeLayer(layer);
 									}
 								});
@@ -126,6 +131,12 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 									marker.device_id = deviceId;
 									map.addLayer(marker);
 									marker.bindPopup(popupText);
+
+									// Open the marker when it was open before the refresh
+									if (marker.device_id == openDeviceId)
+									{
+										marker.openPopup();
+									}
 								}
 							}
 							else
