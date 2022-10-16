@@ -30,4 +30,4 @@ define('MARKER_REFRESH_SECONDS', 5);
 define('MARKER_GRACE_TIME', '90 seconds');
 
 // The text template to be displayed in the popup
-define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{longtext}<br><small>Last Updated: {date} {time}</small>');
+define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{groupleader}<br>{strength}<br>{callsign}<br>{longtext}<br><small>Last Updated: {date} {time}</small>');
