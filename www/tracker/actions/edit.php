@@ -60,7 +60,7 @@ if ($input->getMethod() === 'POST')
 	{
         $tracker = $textMappingHelper->editTracker($tracker, $deviceId);
 
-        header("Location: ../index.php?site_secret=<?php echo SITE_SECRET ?>");
+        header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }
 }
 
