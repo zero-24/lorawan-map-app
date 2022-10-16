@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../includes/app.php';
+include '../../includes/mapApp.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
@@ -34,16 +34,16 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 		<meta name="robots" content="<?php echo SITE_ROBOTS; ?>">
 		<meta http-equiv="x-ua-compatible" content="IE=edge">
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
+		<link rel="apple-touch-icon" sizes="120x120" href="../apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+		<link rel="manifest" href="../site.webmanifest">
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
 		<!-- CSS & JavaScript -->
-		<link rel="stylesheet" href="media/css/leaflet.css" />
-		<link rel="stylesheet" href="media/css/app.css" />
-		<script type="text/javascript" src="media/js/leaflet.js"></script>
+		<link rel="stylesheet" href="../media/css/leaflet.css" />
+		<link rel="stylesheet" href="../media/css/app.css" />
+		<script type="text/javascript" src="../media/js/leaflet.js"></script>
 		<!-- Map generation code -->
 		<script language="javascript" nonce="<?php echo $cspnonce; ?>">
 			window.addEventListener(
@@ -92,8 +92,8 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
 								// Icons from https://github.com/pointhi/leaflet-color-markers
 								var blueIcon = new L.Icon({
-									iconUrl: 'media/css/images/marker-icon-2x.png',
-									shadowUrl: 'media/css/images/marker-shadow.png',
+									iconUrl: '../media/css/images/marker-icon-2x.png',
+									shadowUrl: '../media/css/images/marker-shadow.png',
 									iconSize: [25, 41],
 									iconAnchor: [12, 41],
 									popupAnchor: [1, -34],
@@ -101,8 +101,8 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 								});
 
 								var redIcon = new L.Icon({
-									iconUrl: 'media/css/images/marker-icon-2x-red.png',
-									shadowUrl: 'media/css/images/marker-shadow.png',
+									iconUrl: '../media/css/images/marker-icon-2x-red.png',
+									shadowUrl: '../media/css/images/marker-shadow.png',
 									iconSize: [25, 41],
 									iconAnchor: [12, 41],
 									popupAnchor: [1, -34],

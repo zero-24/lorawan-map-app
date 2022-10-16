@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../includes/uplink.php';
+include '../../../includes/uplinkApp.php';
 
 if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
 {
@@ -15,6 +15,7 @@ if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
 
 // Read current gps data
 $currentGpsData = $fileHelper->readJsonFile('gps_data');
+$todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . 'gps_data');
 
 // Read data
 $dataUplinkMessages = (array) $input->json->get('uplink_message', array());
@@ -51,9 +52,15 @@ if (!isset($tracker->latitude) || !isset($tracker->longitude))
 // Append the new / updated tracker data to the array
 $gpsData[] = $tracker;
 
+// Append the new tracker data
+$todaysGpsData[] = $tracker;
+
 // Encode the json
 $json = json_encode((array) $gpsData);
+$todaysGpsJson = json_encode((array) $todaysGpsData);
+
 
 // Write the JSON Data to the data folder
 $fileHelper->writeJsonFile('gps_data', $json);
+$fileHelper->writeJsonFile(date("Ymd") . '_gps_data', $todaysGpsJson);
 

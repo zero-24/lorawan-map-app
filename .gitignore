@@ -1,3 +1,6 @@
+# Ignore dev envirment
+.vscode
+
 # Ignore access data file
 /etc/constants.php
 

@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../includes/api.php';
+include '../../../includes/apiApp.php';
 
 if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKEN)
 {

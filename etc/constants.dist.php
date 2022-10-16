@@ -20,6 +20,9 @@ define('API_TOKEN', '');
 // The site title to be shown on the page
 define('SITE_TITLE', '');
 
+// The site title for the tracker app to be shown on the page
+define('SITE_TITLE_TRACKER_APP', '');
+
 // Change the robots options
 define('SITE_ROBOTS', 'noindex, nofollow');
 
