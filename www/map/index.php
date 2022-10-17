@@ -49,11 +49,34 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 			window.addEventListener(
 				'DOMContentLoaded',
 				function () {
+					var editTrackerButton = L.Control.extend({
+					options: {
+						position: 'topleft'
+					},
+
+					onAdd: function (map) {
+						var container = L.DomUtil.create('input');
+						container.type="button";
+						container.title="Edit Tracker Data";
+						container.value = "ET";
+						container.style.backgroundSize = "30px 30px";
+						container.style.width = '30px';
+						container.style.height = '30px';
+
+						container.onclick = function() {
+							window.open("../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>", '_blank');
+						}
+
+						return container;
+					}
+					});
+
 					var map = new L.Map('map');
 					L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 						attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
 						maxZoom: 18
 					}).addTo(map);
+					map.addControl(new editTrackerButton());
 
 					// Focus on the the inital set of points
 					map.fitBounds(<?php echo json_encode($points); ?>);
@@ -68,7 +91,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 						var xhr = new XMLHttpRequest();
 						xhr.open('GET', 'api/makers.php', true);
 						xhr.setRequestHeader('content-type', 'application/json');
-						xhr.setRequestHeader('api-token', '<?php echo API_TOKEN; ?>');
+						xhr.setRequestHeader('api-token', '<?php echo API_TOKEN ?>');
 
 						xhr.onload = function()
 						{
@@ -79,7 +102,8 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 								var openDeviceId = '';
 
 								// Remove the existing device layers
-								map.eachLayer(function(layer) {
+								map.eachLayer(function(layer)
+								{
 									if (layer.hasOwnProperty('device_id'))
 									{
 										if (layer.isPopupOpen())
