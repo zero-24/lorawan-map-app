@@ -10,8 +10,7 @@
 			</h3>
 		</div>
 		<div class="card-body">
-			<form method="POST" enctype="multipart/form-data"
-				action="">
+			<form method="POST" enctype="multipart/form-data" action="">
 				<div class="form-group">
 					<label>Tracker ID</label>
 					<input name="device_id" type="text" <?php echo $tracker['device_id'] ? 'readonly' : '' ?> value="<?php echo $tracker['device_id'] ?>" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
