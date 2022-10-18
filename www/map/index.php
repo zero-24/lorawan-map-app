@@ -66,7 +66,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                         container.className = 'leaflet-bar';
 
                         container.onclick = function() {
-                            window.open('../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>', '_blank');
+                            window.open('../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>', '_self');
                         }
 
                         return container;
