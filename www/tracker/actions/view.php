@@ -13,9 +13,9 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
     exit;
 }
 
-$deviceID = $input->getString('id');
+$deviceIdExists = $input->exists('id');
 
-if (!isset($deviceID) || empty($deviceID))
+if (!$deviceIdExists)
 {
     include '../sites/header.php';
     include '../sites/not_found.php';
@@ -23,14 +23,14 @@ if (!isset($deviceID) || empty($deviceID))
     exit;
 }
 
-$tracker = $textMappingHelper->getTrackerById($deviceID);
+$deviceId = (int) $input->getString('id');
+$tracker  = $textMappingHelper->getTrackerById($deviceId);
 
 if (!$tracker)
 {
     include '../sites/header.php';
     include '../sites/not_found.php';
     include '../sites/footer.php';
-
     exit;
 }
 
@@ -74,11 +74,10 @@ if (!$tracker)
                 </tr>
                 <tr>
                     <th>Strength:</th>
-                    <td><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                    <td><?php echo $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 <?php include '../sites/footer.php' ?>
-

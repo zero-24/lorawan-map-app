@@ -23,8 +23,8 @@ if (!$deviceIdExists)
     exit;
 }
 
-$deviceId = $input->getString('id');
-$tracker = $textMappingHelper->getTrackerById($deviceId);
+$deviceId = (int) $input->getString('id');
+$tracker  = $textMappingHelper->getTrackerById($deviceId);
 
 if (!$tracker)
 {
@@ -35,14 +35,14 @@ if (!$tracker)
 }
 
 $errors = [
-    'device_id' => '',
-    'title' => '',
-    'longtext' => '',
-    'callsign' => '',
-    'groupleader' => '',
-    'strength_leader' => '',
+    'device_id'            => '',
+    'title'                => '',
+    'longtext'             => '',
+    'callsign'             => '',
+    'groupleader'          => '',
+    'strength_leader'      => '',
     'strength_groupleader' => '',
-    'strength_helper' => '',
+    'strength_helper'      => '',
 ];
 
 $isValid = true;

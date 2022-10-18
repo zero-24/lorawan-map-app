@@ -56,17 +56,17 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
                     onAdd: function (map) {
                         var container = L.DomUtil.create('input');
-                        container.type="button";
-                        container.title="Edit Tracker Data";
-                        container.value = "ET";
-                        container.style.backgroundSize = "30px 30px";
+                        container.type = 'button';
+                        container.title = 'Edit Tracker Data';
+                        container.value = 'ET';
+                        container.style.backgroundSize = '30px 30px';
                         container.style.width = '35px';
                         container.style.height = '35px';
                         container.style.textAlign = 'center';
                         container.className = 'leaflet-bar';
 
                         container.onclick = function() {
-                            window.open("../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>", '_blank');
+                            window.open('../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>', '_blank');
                         }
 
                         return container;
