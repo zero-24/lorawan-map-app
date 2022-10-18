@@ -15,7 +15,7 @@ if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
 
 // Read current gps data
 $currentGpsData = $fileHelper->readJsonFile('gps_data');
-$todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . 'gps_data');
+$todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_gps_data');
 
 // Read data
 $dataUplinkMessages = (array) $input->json->get('uplink_message', array());
