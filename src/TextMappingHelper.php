@@ -76,7 +76,7 @@ class TextMappingHelper
 
 		foreach ($trackers as $tracker)
 		{
-			if ($tracker['device_id'] == $deviceId)
+			if ($tracker['device_id'] === $deviceId)
 			{
 				return $tracker;
 			}
@@ -127,7 +127,7 @@ class TextMappingHelper
 
 		foreach ($trackers as $i => $tracker)
 		{
-			if ($tracker['device_id'] == $deviceId)
+			if ($tracker['device_id'] === $deviceId)
 			{
 				$trackers[$i] = $editTracker = array_merge($tracker, $data);
 			}
@@ -159,7 +159,7 @@ class TextMappingHelper
 
 		foreach ($trackers as $i => $tracker)
 		{
-			if ($tracker['device_id'] == $deviceId)
+			if ($tracker['device_id'] === $deviceId)
 			{
 				array_splice($trackers, $i, 1);
 			}
@@ -194,35 +194,56 @@ class TextMappingHelper
 		$tracker['strength_helper']      = (int) $tracker['strength_helper'];
 
 		// Start of validation
-		if (!$tracker['device_id']) {
+		if (!$tracker['device_id'])
+		{
 			$isValid = false;
 			$errors['device_id'] = 'Tracker ID is mandatory';
 		}
-		if (!$tracker['title']) {
+
+		if (!$tracker['title'])
+		{
 			$isValid = false;
 			$errors['title'] = 'Title is mandatory';
 		}
-		if (!$tracker['longtext']) {
+
+		if (!$tracker['longtext'])
+		{
 			$isValid = false;
 			$errors['longtext'] = 'Longtext is mandatory';
 		}
-		if (!$tracker['callsign']) {
+
+		if (!$tracker['callsign'])
+		{
 			$isValid = false;
 			$errors['callsign'] = 'Callsign is mandatory';
 		}
-		if (!$tracker['groupleader']) {
+
+		if (!$tracker['groupleader'])
+		{
 			$isValid = false;
 			$errors['groupleader'] = 'Groupleader is mandatory';
 		}
-		if (!$tracker['strength_leader'] && is_int($tracker['strength_leader']) && (int) $tracker['strength_leader'] !== 0) {
+
+		if (!$tracker['strength_leader']
+			&& is_int($tracker['strength_leader'])
+			&& (int) $tracker['strength_leader'] !== 0)
+		{
 			$isValid = false;
 			$errors['strength_leader'] = 'The number of association strength_leaders and doctors are mandatory' . '<br>';
 		}
-		if (!$tracker['strength_groupleader'] && is_int($tracker['strength_groupleader']) && $tracker['strength_groupleader'] !== 0) {
+
+		if (!$tracker['strength_groupleader']
+			&& is_int($tracker['strength_groupleader'])
+			&& $tracker['strength_groupleader'] !== 0)
+		{
 			$isValid = false;
 			$errors['strength_groupleader'] = 'The number of group and squad strength_leaders are mandatory'. '<br>';
 		}
-		if (!$tracker['strength_helper']&& is_int($tracker['strength_helper']) && (int) $tracker['strength_helper'] !== 0) {
+
+		if (!$tracker['strength_helper']
+			&& is_int($tracker['strength_helper'])
+			&& (int) $tracker['strength_helper'] !== 0)
+		{
 			$isValid = false;
 			$errors['strength_helper'] = 'The number of strength_helpers are mandatory' . '<br>';
 		}
