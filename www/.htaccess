@@ -8,16 +8,16 @@
 # ======= Set basic security header =======
 
 <IfModule mod_headers.c>
-	# X-Frame-Options
-	Header always set X-Frame-Options DENY
-	# X-Content-Type nosniff
-	Header always set X-Content-Type-Options nosniff
-	# Referrer Policy
-	Header always set Referrer-Policy "no-referrer"
-	# Strict-Transport-Security
-	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-	# Cross-Origin-Opener-Policy
-	Header always set Cross-Origin-Opener-Policy "same-origin"
-	# Permissions-Policy
-	Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+    # X-Frame-Options
+    Header always set X-Frame-Options DENY
+    # X-Content-Type nosniff
+    Header always set X-Content-Type-Options nosniff
+    # Referrer Policy
+    Header always set Referrer-Policy "no-referrer"
+    # Strict-Transport-Security
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    # Cross-Origin-Opener-Policy
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    # Permissions-Policy
+    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
 </IfModule>

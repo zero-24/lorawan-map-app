@@ -11,7 +11,7 @@ include '../../etc/constants.php';
 // Ensure we've initialized Composer
 if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
 {
-	exit(1);
+    exit(1);
 }
 
 require ROOT_PATH . '/vendor/autoload.php';
@@ -23,7 +23,7 @@ $input = new Input\Input;
 
 // Setup the FileHelper
 $fileHelper = new FileHelper([
-	'dataFolder' => ROOT_PATH . '/data',
+    'dataFolder' => ROOT_PATH . '/data',
 ]);
 
 

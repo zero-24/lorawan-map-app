@@ -15,57 +15,57 @@ namespace zero24\Helper;
  */
 class FileHelper
 {
-	/**
-	 * The folder with the data files
-	 *
-	 * @var    string
-	 * @since  1.0
-	 */
-	private $dataFolder;
+    /**
+     * The folder with the data files
+     *
+     * @var    string
+     * @since  1.0
+     */
+    private $dataFolder;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param   array  $options  Options to init the connection
-	 *
-	 * @since   1.0
-	 */
-	public function __construct($options)
-	{
-		$this->dataFolder = $options['dataFolder'];
-	}
+    /**
+     * Constructor.
+     *
+     * @param   array  $options  Options to init the connection
+     *
+     * @since   1.0
+     */
+    public function __construct($options)
+    {
+        $this->dataFolder = $options['dataFolder'];
+    }
 
-	/**
-	 * Retrun a json file
-	 *
-	 * @param   string  $fileName  The name of the json file without the extension
-	 *
-	 * @since   1.0
-	 */
-	public function readJsonFile($fileName)
-	{
-		$file = $this->dataFolder . '/' . $fileName . '.json';
+    /**
+     * Retrun a json file
+     *
+     * @param   string  $fileName  The name of the json file without the extension
+     *
+     * @since   1.0
+     */
+    public function readJsonFile($fileName)
+    {
+        $file = $this->dataFolder . '/' . $fileName . '.json';
 
-		return json_decode(file_get_contents($file), true);
-	}
+        return json_decode(file_get_contents($file), true);
+    }
 
-	/**
-	 * Write a json file
-	 *
-	 * @param   string  $fileName  The name of the json file without the extension
-	 * @param   array   $json      The json data as array
-	 *
-	 * @since   1.0
-	 */
-	public function writeJsonFile($fileName, $json)
-	{
-		$file = $this->dataFolder . '/' . $fileName . '.json';
+    /**
+     * Write a json file
+     *
+     * @param   string  $fileName  The name of the json file without the extension
+     * @param   array   $json      The json data as array
+     *
+     * @since   1.0
+     */
+    public function writeJsonFile($fileName, $json)
+    {
+        $file = $this->dataFolder . '/' . $fileName . '.json';
 
-		if (\file_exists($file))
-		{
-			unlink($file);
-		}
+        if (\file_exists($file))
+        {
+            unlink($file);
+        }
 
-		return file_put_contents($file, $json);
-	}
+        return file_put_contents($file, $json);
+    }
 }

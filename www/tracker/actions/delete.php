@@ -10,7 +10,7 @@ include '../../../includes/trackerActions.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
-	exit;
+    exit;
 }
 
 $deviceID = $input->getString('id');

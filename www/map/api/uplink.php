@@ -10,7 +10,7 @@ include '../../../includes/uplinkApp.php';
 
 if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
 {
-	exit;
+    exit;
 }
 
 // Read current gps data
@@ -24,10 +24,10 @@ $dataDevice = (array) $input->json->get('end_device_ids', array());
 // Loop through the current data
 foreach ($currentGpsData as $currentGpsPoint)
 {
-	if ($currentGpsPoint['device_id'] !== $dataDevice['device_id'])
-	{
-		$gpsData[] = $currentGpsPoint;
-	}
+    if ($currentGpsPoint['device_id'] !== $dataDevice['device_id'])
+    {
+        $gpsData[] = $currentGpsPoint;
+    }
 }
 
 // Write new data to an stdClass object
@@ -36,7 +36,7 @@ $tracker = new stdClass;
 // Take the data from the payload
 foreach ($dataUplinkMessages['decoded_payload'] as $key => $value)
 {
-	$tracker->$key = $value;
+    $tracker->$key = $value;
 }
 
 $tracker->date = date("d-m-Y");
@@ -46,7 +46,7 @@ $tracker->device_id = $dataDevice['device_id'];
 // We do not have any latitude nor longitude values -> we can not use that update
 if (!isset($tracker->latitude) || !isset($tracker->longitude))
 {
-	return;
+    return;
 }
 
 // Append the new / updated tracker data to the array
