@@ -1,6 +1,6 @@
 <?php
 /**
- * Main entry point for the json edit application
+ * View action for the tracker text mapping edit application
  *
  * @copyright  Copyright (C) 2022 Tobias Zulauf. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
