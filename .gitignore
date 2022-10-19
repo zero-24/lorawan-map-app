@@ -9,8 +9,8 @@
 composer.lock
 
 # Ignore local data files
-/data/gps_data.json
-/data/text_mapping.json
+/data/tracker_gps_data.json
+/data/tracker_metadata.json
 
 ## Ignore local favicons
 www/android-chrome-96x96.png

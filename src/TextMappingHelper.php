@@ -23,7 +23,7 @@ class TextMappingHelper
      * @var    string
      * @since  1.0
      */
-    private $fileName = 'text_mapping';
+    private $fileName = 'tracker_metadata';
 
     /**
      * The FileHelper object pointing to the data folder

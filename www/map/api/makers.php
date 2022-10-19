@@ -13,8 +13,8 @@ if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKE
     exit;
 }
 
-$gpsData = $fileHelper->readJsonFile('gps_data');
-$textMappings = $fileHelper->readJsonFile('text_mapping');
+$gpsData = $fileHelper->readJsonFile('tracker_gps_data');
+$textMappings = $fileHelper->readJsonFile('tracker_metadata');
 
 foreach ($gpsData as $gpsPoint)
 {
@@ -42,8 +42,8 @@ foreach ($gpsData as $gpsPoint)
 
     if (!$mappingFound)
     {
-        $popupText = str_replace('{title}', 'No data in the text_mapping.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
-        $popupText = str_replace('{longtext}', 'No data in the text_mapping.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
+        $popupText = str_replace('{title}', 'No data in the tracker_metadata.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
+        $popupText = str_replace('{longtext}', 'No data in the tracker_metadata.json found for this device_id: "' . $gpsPoint['device_id'] . '"', $popupText);
         $popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
         $popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
         $popupText = str_replace('{groupleader}', 'Unknown Group Leader', $popupText);

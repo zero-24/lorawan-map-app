@@ -23,7 +23,7 @@ class GpsDataHelper
      * @var    string
      * @since  1.0
      */
-    private $fileName = 'gps_data';
+    private $fileName = 'tracker_gps_data';
 
     /**
      * The FileHelper object pointing to the data folder
