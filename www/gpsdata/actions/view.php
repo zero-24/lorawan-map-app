@@ -24,7 +24,7 @@ if (!$deviceIdExists)
 }
 
 $deviceId = $input->getString('id');
-$gpsPoint = $gpsDataApp->getGpsPointById($deviceId);
+$gpsPoint = $gpsDataHelper->getGpsPointById($deviceId);
 $tracker  = $textMappingHelper->getTrackerById($deviceId);
 
 if (!$gpsPoint || !$tracker)
