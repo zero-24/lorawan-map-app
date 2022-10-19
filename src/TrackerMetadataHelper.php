@@ -194,10 +194,10 @@ class TrackerMetadataHelper
         $tracker['strength_helper']      = (int) $tracker['strength_helper'];
 
         // Start of validation
-        if (!$tracker['device_id'])
+        if (!$tracker['device_id'] || $this->getTrackerById($tracker['device_id']))
         {
             $isValid = false;
-            $errors['device_id'] = 'Tracker ID is mandatory';
+            $errors['device_id'] = 'Tracker ID is mandatory and has to be distinct';
         }
 
         if (!$tracker['title'])
