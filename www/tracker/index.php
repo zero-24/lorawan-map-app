@@ -44,9 +44,9 @@ header("content-security-policy: default-src 'self';");
                     <tr>
                         <th>Tracker ID</th>
                         <th>Title</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Callsign</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Callsign</th>
                         <th>Groupleader</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Strength</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Strength</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -55,9 +55,9 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $tracker['device_id'] ?></td>
                             <td><?php echo $tracker['title'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $tracker['callsign'] ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['callsign'] ?></td>
                             <td><?php echo $tracker['groupleader'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
                             <td>
                                 <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>

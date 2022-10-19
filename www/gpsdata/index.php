@@ -43,8 +43,9 @@ header("content-security-policy: default-src 'self';");
                     <tr>
                         <th>Tracker ID</th>
                         <th>Title</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Last Updated Date</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Last Updated Time</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Last Updated Date</th>
+                        <th>Actions</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Last Updated Time</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -53,8 +54,8 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $gpsPoint['device_id'] ?></td>
                             <td><?php echo $textMappingHelper->getTrackerById($gpsPoint['device_id'])['title'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['date'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['time'] ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['date'] ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['time'] ?></td>
                             <td>
                                 <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $gpsPoint['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <form method="POST" action="actions/delete.php">
