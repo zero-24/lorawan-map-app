@@ -46,6 +46,11 @@ class FileHelper
     {
         $file = $this->dataFolder . '/' . $fileName . '.json';
 
+        if (!\file_exists($file))
+        {
+            return [];
+        }
+
         return json_decode(file_get_contents($file), true);
     }
 

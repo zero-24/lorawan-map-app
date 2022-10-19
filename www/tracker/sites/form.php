@@ -13,7 +13,17 @@
             <form method="POST" enctype="multipart/form-data" action="">
                 <div class="form-group">
                     <label>Tracker ID</label>
-                    <input name="device_id" type="text" <?php echo $tracker['device_id'] ? 'readonly' : '' ?> value="<?php echo $tracker['device_id'] ?>" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
+                    <?php if ($tracker['device_id']) : ?>
+                        <input name="device_id" type="text" readonly value="<?php echo $tracker['device_id'] ?>" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
+                    <?php else : ?>
+                        <input name="device_id" type="text" list="trackerGpsData" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
+                        <datalist id="trackerGpsData">
+                            <?php $gpsData = $trackerGpsDataHelper->getGpsData() ?>
+                            <?php foreach ($gpsData as $gpsPoint) : ?>
+                                <?php echo '<option value="' . $gpsPoint['device_id'] . '"' . '>' . $gpsPoint['device_id'] . '</option>' ?>
+                            <?php endforeach ?>
+                        </datalist>
+                    <?php endif ?>
                     <div class="invalid-feedback">
                         <?php echo $errors['device_id'] ?>
                     </div>
