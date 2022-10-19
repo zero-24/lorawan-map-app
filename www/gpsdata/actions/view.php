@@ -57,24 +57,32 @@ if (!$gpsPoint || !$tracker)
                     <td><?php echo $gpsPoint['device_id'] ?></td>
                 </tr>
                 <tr>
-                    <th>Title:</th>
-                    <td><?php echo $gpsPoint['title'] ?></td>
+                    <th>Tracker Name:</th>
+                    <td><?php echo $tracker['title'] ?></td>
                 </tr>
                 <tr>
-                    <th>Longtext:</th>
-                    <td><?php echo $gpsPoint['longtext'] ?></td>
+                    <th>Latitude:</th>
+                    <td><?php echo $gpsPoint['latitude'] ?></td>
                 </tr>
                 <tr>
-                    <th>Callsign:</th>
-                    <td><?php echo $gpsPoint['callsign'] ?></td>
+                    <th>Longitude:</th>
+                    <td><?php echo $gpsPoint['longitude'] ?></td>
                 </tr>
                 <tr>
-                    <th>Groupleader:</th>
-                    <td><?php echo $gpsPoint['groupleader'] ?></td>
+                    <th>Altitude:</th>
+                    <td><?php echo $gpsPoint['altitude'] ?></td>
                 </tr>
                 <tr>
-                    <th>Strength:</th>
-                    <td><?php echo $gpsPoint['strength_leader'] . ' / ' . $gpsPoint['strength_groupleader'] . ' / ' . $gpsPoint['strength_helper'] . ' // <b>' . $gpsPoint['strength'] . '</b>' ?></td>
+                    <th>Satelites:</th>
+                    <td><?php echo $gpsPoint['sat'] ?></td>
+                </tr>
+                <tr>
+                    <th>Last Updated Date:</th>
+                    <td><?php echo $gpsPoint['date'] ?></td>
+                </tr>
+                <tr>
+                    <th>Last Updated Time:</th>
+                    <td><?php echo $gpsPoint['time'] ?></td>
                 </tr>
                 </tbody>
             </table>
