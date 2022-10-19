@@ -37,6 +37,3 @@ $textMappingHelper = new TextMappingHelper([
     'dataFolder' => ROOT_PATH . '/data',
     'fileName' => 'text_mapping',
 ]);
-
-
-

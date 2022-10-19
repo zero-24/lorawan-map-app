@@ -22,6 +22,3 @@ use zero24\Helper\FileHelper;
 $fileHelper = new FileHelper([
     'dataFolder' => ROOT_PATH . '/data',
 ]);
-
-
-

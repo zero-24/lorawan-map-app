@@ -25,6 +25,3 @@ $input = new Input\Input;
 $fileHelper = new FileHelper([
     'dataFolder' => ROOT_PATH . '/data',
 ]);
-
-
-
