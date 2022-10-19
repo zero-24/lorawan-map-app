@@ -23,7 +23,7 @@ if (!$deviceIdExists)
     exit;
 }
 
-$deviceId = (int) $input->getString('id');
+$deviceId = $input->getString('id');
 $gpsPoint  = $gpsDataHelper->getGpsPointById($deviceId);
 
 if (!$gpsPoint)

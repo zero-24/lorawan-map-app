@@ -23,7 +23,7 @@ if (!$deviceIdExists)
     exit;
 }
 
-$deviceId = (int) $input->getString('id');
+$deviceId = $input->getString('id');
 $gpsPoint = $gpsDataApp->getGpsPointById($deviceId);
 $tracker  = $textMappingHelper->getTrackerById($deviceId);
 

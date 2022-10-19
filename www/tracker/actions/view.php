@@ -23,7 +23,7 @@ if (!$deviceIdExists)
     exit;
 }
 
-$deviceId = (int) $input->getString('id');
+$deviceId = $input->getString('id');
 $tracker  = $textMappingHelper->getTrackerById($deviceId);
 
 if (!$tracker)
