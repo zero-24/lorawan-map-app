@@ -44,7 +44,6 @@ header("content-security-policy: default-src 'self';");
                         <th>Tracker ID</th>
                         <th>Title</th>
                         <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Last Updated Date</th>
-                        <th>Actions</th>
                         <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Last Updated Time</th>
                         <th>Actions</th>
                     </tr>
