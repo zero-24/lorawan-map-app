@@ -13,7 +13,7 @@ if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKE
     exit;
 }
 
-$gpsData = $fileHelper->readJsonFile('tracker_gps_data');
+$gpsData = $fileHelper->readJsonFile('tracker_gpsdata');
 $textMappings = $fileHelper->readJsonFile('tracker_metadata');
 
 foreach ($gpsData as $gpsPoint)

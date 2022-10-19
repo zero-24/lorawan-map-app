@@ -13,7 +13,7 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
     exit;
 }
 
-$gpsData = $fileHelper->readJsonFile('tracker_gps_data');
+$gpsData = $fileHelper->readJsonFile('tracker_gpsdata');
 
 foreach ($gpsData as $gpsPoint)
 {

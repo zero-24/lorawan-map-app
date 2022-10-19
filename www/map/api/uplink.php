@@ -14,8 +14,8 @@ if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
 }
 
 // Read current gps data
-$currentGpsData = $fileHelper->readJsonFile('tracker_gps_data');
-$todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_tracker_gps_data');
+$currentGpsData = $fileHelper->readJsonFile('tracker_gpsdata');
+$todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_tracker_gpsdata');
 
 // Read data
 $dataUplinkMessages = (array) $input->json->get('uplink_message', array());
@@ -61,6 +61,6 @@ $todaysGpsJson = json_encode((array) $todaysGpsData);
 
 
 // Write the JSON Data to the data folder
-$fileHelper->writeJsonFile('tracker_gps_data', $json);
-$fileHelper->writeJsonFile(date("Ymd") . '_tracker_gps_data', $todaysGpsJson);
+$fileHelper->writeJsonFile('tracker_gpsdata', $json);
+$fileHelper->writeJsonFile(date("Ymd") . '_tracker_gpsdata', $todaysGpsJson);
 

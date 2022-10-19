@@ -9,7 +9,7 @@
 composer.lock
 
 # Ignore local data files
-/data/tracker_gps_data.json
+/data/tracker_gpsdata.json
 /data/tracker_metadata.json
 
 ## Ignore local favicons

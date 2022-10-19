@@ -4,7 +4,7 @@ This is an LoRaWAN Map App which implements an public facing interface for the [
 
 ## How it works
 
-The data of the LoRaWAN Trackers get passed to the "uplink.php" file which stores them in the `tracker_gps_data.json` file, with the `tracker_metadata.json` additional texts for the tracker device IDs can be stored. From that two files the map application gets its data to be displyed on the OSM Map.
+The data of the LoRaWAN Trackers get passed to the "uplink.php" file which stores them in the `tracker_gpsdata.json` file, with the `tracker_metadata.json` additional texts for the tracker device IDs can be stored. From that two files the map application gets its data to be displyed on the OSM Map.
 Using the Tracker and GPS Data Apps linked from the Map the files can be edited from the web UI
 
 ## How to setup

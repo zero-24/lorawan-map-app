@@ -30,7 +30,7 @@ $fileHelper = new FileHelper([
 
 $gpsDataHelper = new GpsDataHelper([
     'dataFolder' => ROOT_PATH . '/data',
-    'fileName' => 'tracker_gps_data',
+    'fileName' => 'tracker_gpsdata',
 ]);
 
 $textMappingHelper = new TextMappingHelper([
