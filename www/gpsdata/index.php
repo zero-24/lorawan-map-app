@@ -10,7 +10,7 @@ include '../../includes/trackerApp.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
-    exit;
+    //exit;
 }
 
 $gpsData = $gpsDataHelper->getGpsData();
