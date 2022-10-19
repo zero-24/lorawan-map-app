@@ -73,7 +73,7 @@ if (!$gpsPoint || !$tracker)
                     <td><?php echo $gpsPoint['altitude'] ?></td>
                 </tr>
                 <tr>
-                    <th>Satelites:</th>
+                    <th>Satellites:</th>
                     <td><?php echo $gpsPoint['sat'] ?></td>
                 </tr>
                 <tr>
