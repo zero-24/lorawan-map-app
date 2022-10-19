@@ -13,12 +13,12 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
     exit;
 }
 
-$trackers = $textMappingHelper->getTrackers();
+$gpsData = $gpsDataHelper->getGpsData();
 header("content-security-policy: default-src 'self';");
 ?>
 <html>
     <head>
-        <title><?php echo SITE_TITLE_TRACKER_APP ?></title>
+        <title><?php echo SITE_TITLE_GPSDATA_APP ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="robots" content="<?php echo SITE_ROBOTS ?>">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
@@ -35,35 +35,31 @@ header("content-security-policy: default-src 'self';");
     <body>
         <div class="container">
             <p>
-                <a class="btn btn-success" href="actions/create.php?site_secret=<?php echo SITE_SECRET ?>">Create new Tracker</a>
                 <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to Map</a>
-                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to GPS Data App</a>
+                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to Tracker App</a>
             </p>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Tracker ID</th>
                         <th>Title</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Callsign</th>
-                        <th>Groupleader</th>
-                        <th class="d-none d-md-block d-lg-block d-xl-block">Strength</th>
+                        <th class="d-none d-md-block d-lg-block d-xl-block">Last Updated Date</th>
+                        <th class="d-none d-md-block d-lg-block d-xl-block">Last Updated Time</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($trackers as $tracker) : ?>
+                    <?php foreach ($gpsData as $gpsPoint) : ?>
                         <tr>
-                            <td><?php echo $tracker['device_id'] ?></td>
-                            <td><?php echo $tracker['title'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $tracker['callsign'] ?></td>
-                            <td><?php echo $tracker['groupleader'] ?></td>
-                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                            <td><?php echo $gpsPoint['device_id'] ?></td>
+                            <td><?php echo $textMappingHelper->getTrackerById($deviceId)['title'] ?></td>
+                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['date'] ?></td>
+                            <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['time'] ?></td>
                             <td>
-                                <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
-                                <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $gpsPoint['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <form method="POST" action="actions/delete.php">
                                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
-                                    <input type="hidden" name="id" value="<?php echo $tracker['device_id'] ?>">
+                                    <input type="hidden" name="id" value="<?php echo $gpsPoint['device_id'] ?>">
                                     <button class="btn btn-sm btn-outline-danger">Delete</button>
                                 </form>
                             </td>

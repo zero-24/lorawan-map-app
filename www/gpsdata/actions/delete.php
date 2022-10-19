@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../../includes/trackerAction.php';
+include '../../../includes/gpsDataAction.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
@@ -24,9 +24,9 @@ if (!$deviceIdExists)
 }
 
 $deviceId = (int) $input->getString('id');
-$tracker  = $textMappingHelper->getTrackerById($deviceId);
+$gpsPoint  = $gpsDataHelper->getGpsPointById($deviceId);
 
-if (!$tracker)
+if (!$gpsPoint)
 {
     include '../sites/header.php';
     include '../sites/not_found.php';
@@ -34,6 +34,6 @@ if (!$tracker)
     exit;
 }
 
-$textMappingHelper->deleteTracker($deviceID);
+$gpsDataHelper->deleteGpsPoint($deviceID);
 
 header('Location: ../index.php?site_secret=' . SITE_SECRET);

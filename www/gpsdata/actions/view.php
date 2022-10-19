@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../../includes/trackerAction.php';
+include '../../../includes/gpsDataAction.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
@@ -24,9 +24,10 @@ if (!$deviceIdExists)
 }
 
 $deviceId = (int) $input->getString('id');
+$gpsPoint = $gpsDataApp->getGpsPointById($deviceId);
 $tracker  = $textMappingHelper->getTrackerById($deviceId);
 
-if (!$tracker)
+if (!$gpsPoint || !$tracker)
 {
     include '../sites/header.php';
     include '../sites/not_found.php';
@@ -39,13 +40,12 @@ if (!$tracker)
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3>View Tracker: <b><?php echo $tracker['title'] ?></b></h3>
+                <h3>View GPS Point: <b><?php echo $tracker['title'] ?></b></h3>
             </div>
             <div class="card-body">
-                <a class="btn btn-secondary" href="edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>">Edit</a>
                 <form style="display: inline-block" method="POST" action="delete.php">
                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
-                    <input type="hidden" name="id" value="<?php echo $tracker['device_id'] ?>">
+                    <input type="hidden" name="id" value="<?php echo $gpsPoint['device_id'] ?>">
                     <button class="btn btn-danger">Delete</button>
                 </form>
                 <a class="btn btn-info" href="../index.php?site_secret=<?php echo SITE_SECRET ?>">Cancel</a>
@@ -54,27 +54,27 @@ if (!$tracker)
                 <tbody>
                 <tr>
                     <th>Tracker ID:</th>
-                    <td><?php echo $tracker['device_id'] ?></td>
+                    <td><?php echo $gpsPoint['device_id'] ?></td>
                 </tr>
                 <tr>
                     <th>Title:</th>
-                    <td><?php echo $tracker['title'] ?></td>
+                    <td><?php echo $gpsPoint['title'] ?></td>
                 </tr>
                 <tr>
                     <th>Longtext:</th>
-                    <td><?php echo $tracker['longtext'] ?></td>
+                    <td><?php echo $gpsPoint['longtext'] ?></td>
                 </tr>
                 <tr>
                     <th>Callsign:</th>
-                    <td><?php echo $tracker['callsign'] ?></td>
+                    <td><?php echo $gpsPoint['callsign'] ?></td>
                 </tr>
                 <tr>
                     <th>Groupleader:</th>
-                    <td><?php echo $tracker['groupleader'] ?></td>
+                    <td><?php echo $gpsPoint['groupleader'] ?></td>
                 </tr>
                 <tr>
                     <th>Strength:</th>
-                    <td><?php echo $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                    <td><?php echo $gpsPoint['strength_leader'] . ' / ' . $gpsPoint['strength_groupleader'] . ' / ' . $gpsPoint['strength_helper'] . ' // <b>' . $gpsPoint['strength'] . '</b>' ?></td>
                 </tr>
                 </tbody>
             </table>

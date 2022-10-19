@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../../includes/trackerActions.php';
+include '../../../includes/trackerAction.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
