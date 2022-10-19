@@ -36,8 +36,8 @@ header("content-security-policy: default-src 'self';");
         <div class="container">
             <p>
                 <a class="btn btn-success" href="actions/create.php?site_secret=<?php echo SITE_SECRET ?>">Create new Tracker</a>
-                <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to Map</a>
-                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to GPS Data App</a>
+                <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Map</a>
+                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to GPS Data App</a>
             </p>
             <table class="table">
                 <thead>

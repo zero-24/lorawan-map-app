@@ -35,8 +35,8 @@ header("content-security-policy: default-src 'self';");
     <body>
         <div class="container">
             <p>
-                <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to Map</a>
-                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Back to Tracker App</a>
+                <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Map</a>
+                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Tracker App</a>
             </p>
             <table class="table">
                 <thead>
