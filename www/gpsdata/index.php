@@ -52,7 +52,7 @@ header("content-security-policy: default-src 'self';");
                     <?php foreach ($gpsData as $gpsPoint) : ?>
                         <tr>
                             <td><?php echo $gpsPoint['device_id'] ?></td>
-                            <td><?php echo $textMappingHelper->getTrackerById($deviceId)['title'] ?></td>
+                            <td><?php echo $textMappingHelper->getTrackerById($gpsPoint['device_id'])['title'] ?></td>
                             <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['date'] ?></td>
                             <td class="d-none d-md-block d-lg-block d-xl-block"><?php echo $gpsPoint['time'] ?></td>
                             <td>
