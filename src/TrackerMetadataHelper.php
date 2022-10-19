@@ -66,7 +66,7 @@ class TrackerMetadataHelper
      *
      * @param   string  $deviceId  Tracker device ID
      *
-     * @return  object|null  Decoded JSON object with the requested tracker information or null
+     * @return  object|false  Decoded JSON object with the requested tracker information or false
      *
      * @since   1.0
      */
@@ -82,7 +82,7 @@ class TrackerMetadataHelper
             }
         }
 
-        return null;
+        return false;
     }
 
     /**

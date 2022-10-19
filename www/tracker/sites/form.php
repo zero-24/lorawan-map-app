@@ -20,7 +20,9 @@
                         <datalist id="trackerGpsData">
                             <?php $gpsData = $trackerGpsDataHelper->getGpsData() ?>
                             <?php foreach ($gpsData as $gpsPoint) : ?>
-                                <?php echo '<option value="' . $gpsPoint['device_id'] . '"' . '>' . $gpsPoint['device_id'] . '</option>' ?>
+                                <?php if (!$trackerMetadataHelper->getTrackerById($gpsPoint['device_id'])) : ?>
+                                    <?php echo '<option value="' . $gpsPoint['device_id'] . '"' . '>' . $gpsPoint['device_id'] . '</option>' ?>
+                                <?php endif ?>
                             <?php endforeach ?>
                         </datalist>
                     <?php endif ?>
