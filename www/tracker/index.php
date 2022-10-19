@@ -13,7 +13,7 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
     exit;
 }
 
-$trackers = $textMappingHelper->getTrackers();
+$trackers = $trackerMetadataHelper->getTrackers();
 header("content-security-policy: default-src 'self';");
 ?>
 <html>

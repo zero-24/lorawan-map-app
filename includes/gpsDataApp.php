@@ -18,8 +18,8 @@ require ROOT_PATH . '/vendor/autoload.php';
 
 use Joomla\Input;
 use zero24\Helper\FileHelper;
-use zero24\Helper\GpsDataHelper;
-use zero24\Helper\TextMappingHelper;
+use zero24\Helper\TrackerGpsDataHelper;
+use zero24\Helper\TrackerMetadataHelper;
 
 $input = new Input\Input;
 
@@ -28,12 +28,12 @@ $fileHelper = new FileHelper([
     'dataFolder' => ROOT_PATH . '/data',
 ]);
 
-$gpsDataHelper = new GpsDataHelper([
+$trackerGpsDataHelper = new TrackerGpsDataHelper([
     'dataFolder' => ROOT_PATH . '/data',
     'fileName' => 'tracker_gpsdata',
 ]);
 
-$textMappingHelper = new TextMappingHelper([
+$trackerMetadataHelper = new TrackerMetadataHelper([
     'dataFolder' => ROOT_PATH . '/data',
     'fileName' => 'tracker_metadata',
 ]);

@@ -1,6 +1,6 @@
 <?php
 /**
- * TextMappingHelper class
+ * TrackerMetadataHelper class
  *
  * @copyright  Copyright (C) 2022 Tobias Zulauf. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
@@ -11,11 +11,11 @@ namespace zero24\Helper;
 use zero24\Helper\FileHelper;
 
 /**
- * Class for TextMappingHelper
+ * Class for TrackerMetadataHelper
  *
  * @since  1.0
  */
-class TextMappingHelper
+class TrackerMetadataHelper
 {
     /**
      * The filename with the data files

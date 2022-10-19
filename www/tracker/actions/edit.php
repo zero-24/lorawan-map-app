@@ -24,7 +24,7 @@ if (!$deviceIdExists)
 }
 
 $deviceId = $input->getString('id');
-$tracker  = $textMappingHelper->getTrackerById($deviceId);
+$tracker  = $trackerMetadataHelper->getTrackerById($deviceId);
 
 if (!$tracker)
 {
@@ -55,11 +55,11 @@ if ($input->getMethod() === 'POST')
     }
 
     // Check whether the data is valid $tracker and $errors are passed by reference
-    $isValid = $textMappingHelper->validateTracker($tracker, $errors);
+    $isValid = $trackerMetadataHelper->validateTracker($tracker, $errors);
 
     if ($isValid)
     {
-        $tracker = $textMappingHelper->editTracker($tracker, $deviceId);
+        $tracker = $trackerMetadataHelper->editTracker($tracker, $deviceId);
 
         header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }

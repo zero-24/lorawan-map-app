@@ -24,7 +24,7 @@ if (!$deviceIdExists)
 }
 
 $deviceId = $input->getString('id');
-$tracker  = $textMappingHelper->getTrackerById($deviceId);
+$tracker  = $trackerMetadataHelper->getTrackerById($deviceId);
 
 if (!$tracker)
 {
@@ -34,6 +34,6 @@ if (!$tracker)
     exit;
 }
 
-$textMappingHelper->deleteTracker($deviceID);
+$trackerMetadataHelper->deleteTracker($deviceID);
 
 header('Location: ../index.php?site_secret=' . SITE_SECRET);

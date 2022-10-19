@@ -24,7 +24,7 @@ if (!$deviceIdExists)
 }
 
 $deviceId = $input->getString('id');
-$tracker  = $textMappingHelper->getTrackerById($deviceId);
+$tracker  = $trackerMetadataHelper->getTrackerById($deviceId);
 
 if (!$tracker)
 {

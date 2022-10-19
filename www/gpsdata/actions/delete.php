@@ -24,7 +24,7 @@ if (!$deviceIdExists)
 }
 
 $deviceId = $input->getString('id');
-$gpsPoint  = $gpsDataHelper->getGpsPointById($deviceId);
+$gpsPoint  = $trackerGpsDataHelper->getGpsPointById($deviceId);
 
 if (!$gpsPoint)
 {
@@ -34,6 +34,6 @@ if (!$gpsPoint)
     exit;
 }
 
-$gpsDataHelper->deleteGpsPoint($deviceID);
+$trackerGpsDataHelper->deleteGpsPoint($deviceID);
 
 header('Location: ../index.php?site_secret=' . SITE_SECRET);

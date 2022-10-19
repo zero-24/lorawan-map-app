@@ -45,11 +45,11 @@ if ($input->getMethod() === 'POST')
     }
 
     // Check whether the data is valid $tracker and $errors are passed by reference
-    $isValid = $textMappingHelper->validateTracker($tracker, $errors);
+    $isValid = $trackerMetadataHelper->validateTracker($tracker, $errors);
 
     if ($isValid)
     {
-        $tracker = $textMappingHelper->createTracker($tracker);
+        $tracker = $trackerMetadataHelper->createTracker($tracker);
 
         header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }

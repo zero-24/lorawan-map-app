@@ -13,7 +13,7 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
     exit;
 }
 
-$gpsData = $gpsDataHelper->getGpsData();
+$gpsData = $trackerGpsDataHelper->getGpsData();
 header("content-security-policy: default-src 'self';");
 ?>
 <html>
@@ -52,7 +52,7 @@ header("content-security-policy: default-src 'self';");
                     <?php foreach ($gpsData as $gpsPoint) : ?>
                         <tr>
                             <td><?php echo $gpsPoint['device_id'] ?></td>
-                            <td><?php echo $textMappingHelper->getTrackerById($gpsPoint['device_id'])['title'] ?></td>
+                            <td><?php echo $trackerMetadataHelper->getTrackerById($gpsPoint['device_id'])['title'] ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['date'] ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['time'] ?></td>
                             <td>
