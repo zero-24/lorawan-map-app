@@ -34,6 +34,6 @@ if (!$tracker)
     exit;
 }
 
-$trackerMetadataHelper->deleteTracker($deviceID);
+$trackerMetadataHelper->deleteTracker($deviceId);
 
 header('Location: ../index.php?site_secret=' . SITE_SECRET);
