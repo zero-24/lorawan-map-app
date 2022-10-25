@@ -1,6 +1,6 @@
 # DRK LoRaWAN Map App
 
-This is an LoRaWAN Map App which implements an public facing interface for the [LoRaWAN GPS Tracker](https://www.aeq-web.com/lorawan-gps-tracker-the-things-stack-tts-application-server/) using leaflet and OpenStreetMap.
+This is an LoRaWAN Map App which implements an public facing interface for the [LoRaWAN GPS Tracker](https://www.aeq-web.com/lorawan-gps-tracker-the-things-stack-tts-application-server/) using leaflet and OpenStreetMap. The JSON File Apps are based losely on [PHPSimpleCRUD-FS](https://github.com/thecodeholic/PHPSimpleCRUD-FS).
 
 ## How it works
 
