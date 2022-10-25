@@ -1,0 +1,13 @@
+[
+    {
+        "device_id": "tracker1",
+        "title": "EVT1",
+        "longtext": "EVT1 with full rescue service backpack and oxygen",
+        "callsign": "EVT1",
+        "groupleader": "John Doe",
+        "strength_leader": 0,
+        "strength_groupleader": 1,
+        "strength_helper": 2,
+        "strength": 3
+    }
+]
