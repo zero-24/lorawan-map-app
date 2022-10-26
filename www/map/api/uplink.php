@@ -59,7 +59,6 @@ $todaysGpsData[] = $tracker;
 $json = json_encode((array) $gpsData);
 $todaysGpsJson = json_encode((array) $todaysGpsData);
 
-
 // Write the JSON Data to the data folder
 $fileHelper->writeJsonFile('tracker_gpsdata', $json);
 $fileHelper->writeJsonFile(date("Ymd") . '_tracker_gpsdata', $todaysGpsJson);

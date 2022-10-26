@@ -231,6 +231,12 @@ class PointDataHelper
             $errors['longtext'] = 'Longtext is mandatory and has to be a string';
         }
 
+        if (!$tracker['callsign'])
+        {
+            $isValid = false;
+            $errors['callsign'] = 'Callsign is mandatory';
+        }
+
         if (!$point['latitude'])
         {
             $isValid = false;

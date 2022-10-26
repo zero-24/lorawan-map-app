@@ -38,5 +38,8 @@ define('MARKER_REFRESH_SECONDS', 5);
 // The grace time when the marker should get red (usage https://www.php.net/manual/en/dateinterval.createfromdatestring.php)
 define('MARKER_GRACE_TIME', '90 seconds');
 
-// The text template to be displayed in the popup
+// The text template to be displayed in the popup for trackers
 define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{groupleader}<br>{strength}<br>{callsign}<br>{longtext}<br><small>Last Updated: {date} {time}</small>');
+
+// The text template to be displayed in the popup for fixed points
+define('MARKER_POPUP_POINT_TEXT_TEMPLATE', '<b>{title}</b>{callsign}<br>{longtext}<br><small>Group: {group}</small>');

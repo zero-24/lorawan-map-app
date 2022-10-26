@@ -13,7 +13,7 @@ if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKE
     exit;
 }
 
-$gpsData = $trackerGpsDataHelper->getGpsData();
+$gpsData  = $trackerGpsDataHelper->getGpsData();
 $trackers = $trackerMetadataHelper->getTrackers();
 
 foreach ($gpsData as $gpsPoint)

@@ -38,6 +38,7 @@ $errors = [
     'point_id'   => '',
     'title'      => '',
     'longtext'   => '',
+    'callsign'   => '',
     'latitude'   => '',
     'longitude'  => '',
     'visibility' => '',

@@ -65,6 +65,10 @@ if (!$point)
                     <td><?php echo $point['longtext'] ?></td>
                 </tr>
                 <tr>
+                    <th>Callsign:</th>
+                    <td><?php echo $tracker['callsign'] ?></td>
+                </tr>
+                <tr>
                     <th>Latitude:</th>
                     <td><?php echo $point['latitude'] ?></td>
                 </tr>

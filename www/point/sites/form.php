@@ -37,6 +37,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>Callsign</label>
+                    <input name="callsign" type="text" value="<?php echo $tracker['callsign'] ?>" class="form-control <?php echo $errors['callsign'] ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?php echo $errors['callsign'] ?>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Latitude</label>
                     <input name="latitude" type="text" value="<?php echo $point['latitude'] ?>" class="form-control <?php echo $errors['latitude'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
