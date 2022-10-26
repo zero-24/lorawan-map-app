@@ -208,13 +208,11 @@ class PointDataHelper
     {
         $isValid = true;
 
-        $point['visibility'] = (int) $point['visibility'];
-
         // Start of validation
-        if (!$point['point_id'] || $this->getPointById($point['point_id']))
+        if (!$point['point_id'])
         {
-            //$isValid = false;
-            //$errors['point_id'] = 'Point ID is mandatory and has to be distinct';
+            $isValid = false;
+            $errors['point_id'] = 'Point ID is mandatory';
         }
 
         if (!$point['title'] || !is_string($point['title']))
@@ -283,10 +281,10 @@ class PointDataHelper
             $errors['longitude'] = 'Longitude is mandatory';
         }
 
-        if (!$point['visibility'] || !is_int($point['visibility']))
+        if (!$point['visibility'] || !in_array($point['visibility'], ['visible','hidden']))
         {
-            //$isValid = false;
-            //$errors['visibility'] = 'Visibility is mandatory and has to be an integer';
+            $isValid = false;
+            $errors['visibility'] = "Visibility is mandatory and has to be 'visible' or 'hidden'";
         }
 
         if (!$point['group'] || !is_string($point['group']))

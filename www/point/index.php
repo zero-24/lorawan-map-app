@@ -56,7 +56,7 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $point['point_id'] ?></td>
                             <td><?php echo $point['title'] ?></td>
-                            <td><?php echo $point['visibility'] ? 'Visible' : 'Hidden' ?></td>
+                            <td><?php echo $point['visibility'] == 'visible' || $point['visibility'] == '' ? 'Visible' : 'Hidden' ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['callsign'] ?></td>
                             <td><?php echo $point['group'] ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['strength_leader'] . ' / ' . (int) $point['strength_groupleader'] . ' / ' . (int) $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>' ?></td>

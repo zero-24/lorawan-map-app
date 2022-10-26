@@ -94,11 +94,11 @@
                     <label>Visibility</label>
                     <div class="form-control <?php echo $errors['visibility'] ? 'is-invalid' : '' ?>">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="visibility-visible" name="visibility" class="custom-control-input" value="1" <?php echo $point['visibility'] == 1 ? 'checked' : '' ?>>
+                            <input type="radio" id="visibility-visible" name="visibility" class="custom-control-input" value="visible" <?php echo $point['visibility'] == 'visible' || $point['visibility'] == '' ? 'checked' : '' ?>>
                             <label class="custom-control-label" for="visibility-visible">Visible</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="visibility-hidden" name="visibility" class="custom-control-input" value="0" <?php echo $point['visibility'] == 0 ? 'checked' : '' ?>>
+                            <input type="radio" id="visibility-hidden" name="visibility" class="custom-control-input" value="hidden" <?php echo $point['visibility'] == 'hidden' ? 'checked' : '' ?>>
                             <label class="custom-control-label" for="visibility-hidden">Hidden</label>
                         </div>
                     </div>
