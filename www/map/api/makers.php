@@ -80,7 +80,7 @@ foreach ($points as $point)
         continue;
     }
 
-    $popupText = MARKER_POPUP_TEXT_TEMPLATE;
+    $popupText = MARKER_POPUP_POINT_TEXT_TEMPLATE;
     $popupText = str_replace('{title}', $point['title'], $popupText);
     $popupText = str_replace('{longtext}', $point['longtext'], $popupText);
     $popupText = str_replace('{group}', $point['group'], $popupText);
@@ -92,7 +92,6 @@ foreach ($points as $point)
     $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $icon];
 
 }
-
 
 // Output the json
 header('content-type: application/json');
