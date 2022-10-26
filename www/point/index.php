@@ -46,7 +46,9 @@ header("content-security-policy: default-src 'self';");
                         <th>Point ID</th>
                         <th>Title</th>
                         <th>Visibility</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Callsign</th>
                         <th>Group</th>
+                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Strength</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +57,9 @@ header("content-security-policy: default-src 'self';");
                             <td><?php echo $point['point_id'] ?></td>
                             <td><?php echo $point['title'] ?></td>
                             <td><?php echo $point['visibility'] ? 'Visible' : 'Hidden' ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['callsign'] ?></td>
                             <td><?php echo $point['group'] ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['strength_leader'] . ' / ' . (int) $point['strength_groupleader'] . ' / ' . (int) $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>' ?></td>
                             <td>
                                 <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>

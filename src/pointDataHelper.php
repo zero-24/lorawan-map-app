@@ -208,8 +208,6 @@ class PointDataHelper
     {
         $isValid = true;
 
-        $point['latitude']   = (int) $point['latitude'];
-        $point['longitude']  = (int) $point['longitude'];
         $point['visibility'] = (int) $point['visibility'];
 
         // Start of validation
