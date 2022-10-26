@@ -13,8 +13,8 @@ if (array_change_key_case(getallheaders(), CASE_LOWER)['api-token'] !== API_TOKE
     exit;
 }
 
-$gpsData = $fileHelper->readJsonFile('tracker_gpsdata');
-$textMappings = $fileHelper->readJsonFile('tracker_metadata');
+$gpsData = $trackerGpsDataHelper->getGpsData();
+$trackers = $trackerMetadataHelper->getTrackers();
 
 foreach ($gpsData as $gpsPoint)
 {
@@ -24,17 +24,17 @@ foreach ($gpsData as $gpsPoint)
     $popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
     $popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
 
-    foreach ($textMappings as $textMapping)
+    foreach ($trackers as $tracker)
     {
-        if ($textMapping['device_id'] === $gpsPoint['device_id'])
+        if ($tracker['device_id'] === $gpsPoint['device_id'])
         {
             $mappingFound = true;
 
-            $popupText = str_replace('{title}', $textMapping['title'], $popupText);
-            $popupText = str_replace('{longtext}', $textMapping['longtext'], $popupText);
-            $popupText = str_replace('{groupleader}', $textMapping['groupleader'], $popupText);
-            $popupText = str_replace('{callsign}', $textMapping['callsign'], $popupText);
-            $popupText = str_replace('{strength}', $textMapping['strength_leader'] . ' / ' . $textMapping['strength_groupleader'] . ' / ' . $textMapping['strength_helper'] . ' // <b>' . $textMapping['strength'] . '</b>', $popupText);
+            $popupText = str_replace('{title}', $tracker['title'], $popupText);
+            $popupText = str_replace('{longtext}', $tracker['longtext'], $popupText);
+            $popupText = str_replace('{groupleader}', $tracker['groupleader'], $popupText);
+            $popupText = str_replace('{callsign}', $tracker['callsign'], $popupText);
+            $popupText = str_replace('{strength}', $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>', $popupText);
 
             continue;
         }
@@ -70,6 +70,29 @@ foreach ($gpsData as $gpsPoint)
     // Add markers to the return array
     $markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $icon];
 }
+
+$points = $pointDataHelper->getPoints();
+
+foreach ($points as $point)
+{
+    if ($point['visibility'] === 0)
+    {
+        continue;
+    }
+
+    $popupText = MARKER_POPUP_TEXT_TEMPLATE;
+    $popupText = str_replace('{title}', $point['title'], $popupText);
+    $popupText = str_replace('{longtext}', $point['longtext'], $popupText);
+    $popupText = str_replace('{group}', $point['group'], $popupText);
+
+    // Make the icon red when the time has been exceeded
+    $icon = 'red';
+
+    // Add markers to the return array
+    $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $icon];
+
+}
+
 
 // Output the json
 header('content-type: application/json');
