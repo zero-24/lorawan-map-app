@@ -75,7 +75,7 @@ $points = $pointDataHelper->getPoints();
 
 foreach ($points as $point)
 {
-    if ($point['visibility'] === 'visible')
+    if ($point['visibility'] === 'hidden')
     {
         continue;
     }
