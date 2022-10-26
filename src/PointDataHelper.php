@@ -199,6 +199,7 @@ class PointDataHelper
      *
      * @param   array  &$point   The data to be validated (referenced)
      * @param   array  &$errors  The errors collected while validating (referenced)
+     * @param   string  $type      String wether we are in 'edit' or 'create' mode
      *
      * @return  bool
      *

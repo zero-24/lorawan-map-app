@@ -177,14 +177,15 @@ class TrackerMetadataHelper
     /**
      * Validate the data passed to the app
      *
-     * @param   array  &$tracker  The data to be validated (referenced)
-     * @param   array  &$errors   The errors collected while validating (referenced)
+     * @param   array   &$tracker  The data to be validated (referenced)
+     * @param   array   &$errors   The errors collected while validating (referenced)
+     * @param   string  $type      String wether we are in 'edit' or 'create' mode
      *
      * @return  bool
      *
      * @since   1.0
      */
-    public function validateTracker(&$tracker, &$errors)
+    public function validateTracker(&$tracker, &$errors, $type)
     {
         $isValid = true;
 
