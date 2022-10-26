@@ -35,14 +35,18 @@ if (!$point)
 }
 
 $errors = [
-    'point_id'   => '',
-    'title'      => '',
-    'longtext'   => '',
-    'callsign'   => '',
-    'latitude'   => '',
-    'longitude'  => '',
-    'visibility' => '',
-    'group'      => '',
+    'point_id'             => '',
+    'title'                => '',
+    'longtext'             => '',
+    'callsign'             => '',
+    'latitude'             => '',
+    'longitude'            => '',
+    'visibility'           => '',
+    'group'                => '',
+    'pointleader'          => '',
+    'strength_leader'      => '',
+    'strength_groupleader' => '',
+    'strength_helper'      => '',
 ];
 
 $isValid = true;

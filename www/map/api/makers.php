@@ -85,6 +85,8 @@ foreach ($points as $point)
     $popupText = str_replace('{longtext}', $point['longtext'], $popupText);
     $popupText = str_replace('{callsign}', $point['callsign'], $popupText);
     $popupText = str_replace('{group}', $point['group'], $popupText);
+    $popupText = str_replace('{pointleader}', $point['pointleader'], $popupText);
+    $popupText = str_replace('{strength}', $point['strength_leader'] . ' / ' . $point['strength_groupleader'] . ' / ' . $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>', $popupText);
 
     // Make the icon red when the time has been exceeded
     $icon = 'red';

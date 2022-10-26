@@ -14,25 +14,33 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
 }
 
 $point = [
-    'point_id'   => '',
-    'title'      => '',
-    'longtext'   => '',
-    'callsign'   => '',
-    'latitude'   => '',
-    'longitude'  => '',
-    'visibility' => '',
-    'group'      => '',
+    'point_id'             => '',
+    'title'                => '',
+    'longtext'             => '',
+    'callsign'             => '',
+    'latitude'             => '',
+    'longitude'            => '',
+    'visibility'           => '',
+    'group'                => '',
+    'pointleader'          => '',
+    'strength_leader'      => '',
+    'strength_groupleader' => '',
+    'strength_helper'      => '',
 ];
 
 $errors = [
-    'point_id'   => '',
-    'title'      => '',
-    'longtext'   => '',
-    'callsign'   => '',
-    'latitude'   => '',
-    'longitude'  => '',
-    'visibility' => '',
-    'group'      => '',
+    'point_id'             => '',
+    'title'                => '',
+    'longtext'             => '',
+    'callsign'             => '',
+    'latitude'             => '',
+    'longitude'            => '',
+    'visibility'           => '',
+    'group'                => '',
+    'pointleader'          => '',
+    'strength_leader'      => '',
+    'strength_groupleader' => '',
+    'strength_helper'      => '',
 ];
 
 $isValid = true;
