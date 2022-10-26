@@ -45,7 +45,7 @@ if ($input->getMethod() === 'POST')
     }
 
     // Check whether the data is valid $tracker and $errors are passed by reference
-    $isValid = $trackerMetadataHelper->validateTracker($tracker, $errors);
+    $isValid = $trackerMetadataHelper->validateTracker($tracker, $errors, 'create');
 
     if ($isValid)
     {

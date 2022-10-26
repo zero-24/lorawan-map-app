@@ -53,7 +53,7 @@ if ($input->getMethod() === 'POST')
     }
 
     // Check whether the data is valid $point and $errors are passed by reference
-    $isValid = $pointDataHelper->validatePoint($point, $errors);
+    $isValid = $pointDataHelper->validatePoint($point, $errors, 'create');
 
     if ($isValid)
     {

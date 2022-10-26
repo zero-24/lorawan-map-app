@@ -204,15 +204,15 @@ class PointDataHelper
      *
      * @since   1.0
      */
-    public function validatePoint(&$point, &$errors)
+    public function validatePoint(&$point, &$errors, $type)
     {
         $isValid = true;
 
         // Start of validation
-        if (!$point['point_id'])
+        if (!$point['point_id'] || ($type === 'create' && $this->getPointById($point['point_id'])))
         {
             $isValid = false;
-            $errors['point_id'] = 'Point ID is mandatory';
+            $errors['point_id'] = 'Point ID is mandatory and has to be unique';
         }
 
         if (!$point['title'] || !is_string($point['title']))
