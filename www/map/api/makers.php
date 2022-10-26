@@ -83,6 +83,7 @@ foreach ($points as $point)
     $popupText = MARKER_POPUP_POINT_TEXT_TEMPLATE;
     $popupText = str_replace('{title}', $point['title'], $popupText);
     $popupText = str_replace('{longtext}', $point['longtext'], $popupText);
+    $popupText = str_replace('{callsign}', $point['callsign'], $popupText);
     $popupText = str_replace('{group}', $point['group'], $popupText);
 
     // Make the icon red when the time has been exceeded
