@@ -36,7 +36,6 @@ $trackerMetadataHelper = new TrackerMetadataHelper([
     'fileName' => 'tracker_metadata',
 ]);
 
-
 // Setup the PointDataHelper
 $pointDataHelper = new PointDataHelper([
     'dataFolder' => ROOT_PATH . '/data',
