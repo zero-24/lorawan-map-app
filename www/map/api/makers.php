@@ -93,7 +93,6 @@ foreach ($points as $point)
 
     // Add markers to the return array
     $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $icon];
-
 }
 
 // Output the json
