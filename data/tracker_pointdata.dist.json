@@ -1,0 +1,11 @@
+[
+    {
+        "point_id": "point1",
+        "title": "Point1 Title",
+        "longtext": "This is a very long description of the point content",
+        "latitude": 50.957881,
+        "longitude": 6.967279,
+        "visibility": 1,
+        "group": "DRK"
+    }
+]

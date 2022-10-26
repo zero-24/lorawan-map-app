@@ -22,11 +22,6 @@ use zero24\Helper\TrackerMetadataHelper;
 
 $input = new Input\Input;
 
-// Setup the FileHelper
-$fileHelper = new FileHelper([
-    'dataFolder' => ROOT_PATH . '/data',
-]);
-
 $trackerMetadataHelper = new TrackerMetadataHelper([
     'dataFolder' => ROOT_PATH . '/data',
     'fileName' => 'tracker_metadata',

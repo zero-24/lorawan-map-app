@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../../etc/constants.php';
+include '../../etc/constants.php';
 
 // Ensure we've initialized Composer
 if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
@@ -17,17 +17,13 @@ if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
 require ROOT_PATH . '/vendor/autoload.php';
 
 use Joomla\Input;
-use zero24\Helper\TrackerGpsDataHelper;
-use zero24\Helper\TrackerMetadataHelper;
+use zero24\Helper\PointDataHelper;
 
 $input = new Input\Input;
 
-$trackerGpsDataHelper = new TrackerGpsDataHelper([
+// Setup the PointDataHelper
+$pointDataHelper = new PointDataHelper([
     'dataFolder' => ROOT_PATH . '/data',
-    'fileName' => 'tracker_gpsdata',
+    'fileName' => 'tracker_pointdata',
 ]);
 
-$trackerMetadataHelper = new TrackerMetadataHelper([
-    'dataFolder' => ROOT_PATH . '/data',
-    'fileName' => 'tracker_metadata',
-]);

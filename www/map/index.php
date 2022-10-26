@@ -97,6 +97,30 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     }
                     });
 
+                    var editPointButton = L.Control.extend({
+                    options: {
+                        position: 'topleft'
+                    },
+
+                    onAdd: function (map) {
+                        var container = L.DomUtil.create('input');
+                        container.type = 'button';
+                        container.title = 'Edit Point Data';
+                        container.value = 'EP';
+                        container.style.backgroundSize = '30px 30px';
+                        container.style.width = '35px';
+                        container.style.height = '35px';
+                        container.style.textAlign = 'center';
+                        container.className = 'leaflet-bar';
+
+                        container.onclick = function() {
+                            window.open('../point/index.php?site_secret=<?php echo SITE_SECRET ?>', '_self');
+                        }
+
+                        return container;
+                    }
+                    });
+
                     var map = new L.Map('map');
 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -107,6 +131,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     // Add Edit Tracker Button to the Map
                     map.addControl(new editTrackerButton());
                     map.addControl(new viewGpsDataButton());
+                    map.addControl(new editPointButton());
 
                     // Focus on the the inital set of points
                     map.fitBounds(<?php echo json_encode($points); ?>);

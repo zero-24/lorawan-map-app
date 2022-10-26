@@ -17,17 +17,12 @@ if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
 require ROOT_PATH . '/vendor/autoload.php';
 
 use Joomla\Input;
-use zero24\Helper\TrackerGpsDataHelper;
-use zero24\Helper\TrackerMetadataHelper;
+use zero24\Helper\PointDataHelper;
 
 $input = new Input\Input;
 
-$trackerGpsDataHelper = new TrackerGpsDataHelper([
+// Setup the PointDataHelper
+$pointDataHelper = new PointDataHelper([
     'dataFolder' => ROOT_PATH . '/data',
-    'fileName' => 'tracker_gpsdata',
-]);
-
-$trackerMetadataHelper = new TrackerMetadataHelper([
-    'dataFolder' => ROOT_PATH . '/data',
-    'fileName' => 'tracker_metadata',
+    'fileName' => 'tracker_pointdata',
 ]);

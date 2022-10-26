@@ -6,19 +6,19 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../includes/trackerApp.php';
+include '../../includes/pointDataApp.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
     exit;
 }
 
-$trackers = $trackerMetadataHelper->getTrackers();
+$points = $pointDataHelper->getPoints();
 header("content-security-policy: default-src 'self';");
 ?>
 <html>
     <head>
-        <title><?php echo SITE_TITLE_TRACKER_APP ?></title>
+        <title><?php echo SITE_TITLE_POINT_APP ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="robots" content="<?php echo SITE_ROBOTS ?>">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
@@ -35,36 +35,33 @@ header("content-security-policy: default-src 'self';");
     <body>
         <div class="container">
             <p>
-                <a class="btn btn-success" href="actions/create.php?site_secret=<?php echo SITE_SECRET ?>">Create new Tracker</a>
+                <a class="btn btn-success" href="actions/create.php?site_secret=<?php echo SITE_SECRET ?>">Create new Point</a>
                 <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Map</a>
+                <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Tracker App</a>
                 <a class="btn btn-dark" href="../gpsdata/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to GPS Data App</a>
-                <a class="btn btn-dark" href="../point/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Point Data App</a>
             </p>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Tracker ID</th>
+                        <th>Point ID</th>
                         <th>Title</th>
-                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Callsign</th>
-                        <th>Groupleader</th>
-                        <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Strength</th>
-                        <th>Actions</th>
+                        <th>Visibility</th>
+                        <th>Group</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($trackers as $tracker) : ?>
+                    <?php foreach ($points as $point) : ?>
                         <tr>
-                            <td><?php echo $tracker['device_id'] ?></td>
-                            <td><?php echo $tracker['title'] ?></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['callsign'] ?></td>
-                            <td><?php echo $tracker['groupleader'] ?></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                            <td><?php echo $point['point_id'] ?></td>
+                            <td><?php echo $point['title'] ?></td>
+                            <td><?php echo $point['visibility'] ? 'Visible' : 'Hidden' ?></td>
+                            <td><?php echo $point['group'] ?></td>
                             <td>
-                                <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
-                                <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
+                                <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>
                                 <form method="POST" action="actions/delete.php">
                                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
-                                    <input type="hidden" name="id" value="<?php echo $tracker['device_id'] ?>">
+                                    <input type="hidden" name="id" value="<?php echo $point['point_id'] ?>">
                                     <button class="btn btn-sm btn-outline-danger">Delete</button>
                                 </form>
                             </td>
