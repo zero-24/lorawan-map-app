@@ -66,15 +66,15 @@ if (!$point)
                 </tr>
                 <tr>
                     <th>Callsign:</th>
-                    <td><?php echo $tracker['callsign'] ?></td>
+                    <td><?php echo $point['callsign'] ?></td>
                 </tr>
                 <tr>
                     <th>Contact/Leader:</th>
-                    <td><?php echo $tracker['pointleader'] ?></td>
+                    <td><?php echo $point['pointleader'] ?></td>
                 </tr>
                 <tr>
                     <th>Strength:</th>
-                    <td><?php echo $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                    <td><?php echo $point['strength_leader'] . ' / ' . $point['strength_groupleader'] . ' / ' . $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>' ?></td>
                 </tr>
                 <tr>
                     <th>Latitude:</th>

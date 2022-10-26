@@ -243,10 +243,10 @@ class PointDataHelper
             $errors['callsign'] = 'Callsign is mandatory';
         }
 
-        if (!$point['groupleader'])
+        if (!$point['pointleader'])
         {
             $isValid = false;
-            $errors['groupleader'] = 'Groupleader is mandatory';
+            $errors['pointleader'] = 'Groupleader is mandatory';
         }
 
         if (!$point['strength_leader']

@@ -38,14 +38,14 @@
                 </div>
                 <div class="form-group">
                     <label>Callsign</label>
-                    <input name="callsign" type="text" value="<?php echo $tracker['callsign'] ?>" class="form-control <?php echo $errors['callsign'] ? 'is-invalid' : '' ?>">
+                    <input name="callsign" type="text" value="<?php echo $point['callsign'] ?>" class="form-control <?php echo $errors['callsign'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?php echo $errors['callsign'] ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Contact/Leader</label>
-                    <input name="pointleader" type="text" value="<?php echo $tracker['pointleader'] ?>" class="form-control <?php echo $errors['pointleader'] ? 'is-invalid' : '' ?>">
+                    <input name="pointleader" type="text" value="<?php echo $point['pointleader'] ?>" class="form-control <?php echo $errors['pointleader'] ? 'is-invalid' : '' ?>">
                     <div class="invalid-feedback">
                         <?php echo $errors['pointleader'] ?>
                     </div>
@@ -55,21 +55,21 @@
                     <div class="form-group row">
                         <div class="col">
                             <label for="strength_leader" class="small">Number of association leaders and doctors</label>
-                            <input id="strength_leader" name="strength_leader" type="number" step="1" value="<?php echo $tracker['strength_leader'] ?>" class="form-control <?php echo $errors['strength_leader'] ? 'is-invalid' : '' ?>">
+                            <input id="strength_leader" name="strength_leader" type="number" step="1" value="<?php echo $point['strength_leader'] ?>" class="form-control <?php echo $errors['strength_leader'] ? 'is-invalid' : '' ?>">
                             <div class="invalid-feedback">
                                 <?php echo $errors['strength_leader'] ?>
                             </div>
                         </div>
                         <div class="col">
                             <label for="strength_groupleader" class="small">Number of group and squad leaders</label>
-                            <input id="strength_groupleader" name="strength_groupleader" type="number" step="1" value="<?php echo $tracker['strength_groupleader'] ?>" class="form-control <?php echo $errors['strength_groupleader'] ? 'is-invalid' : '' ?>">
+                            <input id="strength_groupleader" name="strength_groupleader" type="number" step="1" value="<?php echo $point['strength_groupleader'] ?>" class="form-control <?php echo $errors['strength_groupleader'] ? 'is-invalid' : '' ?>">
                             <div class="invalid-feedback">
                                 <?php echo $errors['strength_groupleader'] ?>
                             </div>
                         </div>
                         <div class="col">
                             <label for="strength_helper" class="small">Number of helpers</label>
-                            <input id="strength_helper" name="strength_helper" type="number" step="1" value="<?php echo $tracker['strength_helper'] ?>" class="form-control <?php echo $errors['strength_helper'] ? 'is-invalid' : '' ?>">
+                            <input id="strength_helper" name="strength_helper" type="number" step="1" value="<?php echo $point['strength_helper'] ?>" class="form-control <?php echo $errors['strength_helper'] ? 'is-invalid' : '' ?>">
                             <div class="invalid-feedback">
                                 <?php echo $errors['strength_helper'] ?>
                             </div>
