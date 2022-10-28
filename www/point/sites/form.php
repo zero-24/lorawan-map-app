@@ -121,15 +121,22 @@
                 </div>
                 <div class="form-group">
                     <label>Icon</label>
-                    <input name="icon" type="text" value="<?php echo $point['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
-                    <datalist id="iconDataList">
-                        <?php $pointIcons = $pointDataHelper->getPointIcons() ?>
-                        <?php foreach ($pointIcons as $pointIcon) : ?>
-                            <?php echo '<option value="' . $pointIcon . '"' . '>' . $pointIcon . '</option>' ?>
-                        <?php endforeach ?>
-                    </datalist>
-                    <div class="invalid-feedback">
-                        <?php echo $errors['icon'] ?>
+                    <?php $pointIcons = $pointDataHelper->getPointIcons() ?>
+                    <div class="form-group row">
+                        <div class="col">
+                            <input name="icon" type="text" value="<?php echo $point['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                            <datalist id="iconDataList">
+                                <?php foreach ($pointIcons as $pointIcon => $pointIconTitle) : ?>
+                                    <?php echo '<option value="' . $pointIcon . '"' . '>' . $pointIconTitle . '</option>' ?>
+                                <?php endforeach ?>
+                            </datalist>
+                        </div>
+                        <div class="col">
+                            <input name="icon_title" type="text" readonly value="<?php echo $pointIcons[$point['icon']] ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                        </div>
+                        <div class="invalid-feedback">
+                            <?php echo $errors['icon'] ?>
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">

@@ -99,7 +99,10 @@ class TrackerMetadataHelper
 
         foreach ($trackers as $tracker)
         {
-            $trackerIcons[] = $tracker['icon'];
+            if (!isset($trackerIcons[$tracker['icon']]))
+            {
+                $trackerIcons[$tracker['icon']] = $tracker['icon'];
+            }
         }
 
         return array_unique($trackerIcons);

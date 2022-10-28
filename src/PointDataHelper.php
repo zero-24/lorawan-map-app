@@ -95,7 +95,10 @@ class PointDataHelper
 
         foreach ($points as $point)
         {
-            $pointIcons[] = $point['icon'];
+            if (!isset($pointIcons[$point['icon']]))
+            {
+                $pointIcons[$point['icon']] = $point['icon'];
+            }
         }
 
         return array_unique($pointIcons);

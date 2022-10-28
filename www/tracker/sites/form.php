@@ -86,15 +86,22 @@
                 </div>
                 <div class="form-group">
                     <label>Icon</label>
-                    <input name="icon" type="text" value="<?php echo $tracker['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
-                    <datalist id="iconDataList">
-                        <?php $metadataIcons = $trackerMetadataHelper->getTrackerIcons() ?>
-                        <?php foreach ($metadataIcons as $metadataIcon) : ?>
-                            <?php echo '<option value="' . $metadataIcon . '"' . '>' . $metadataIcon . '</option>' ?>
-                        <?php endforeach ?>
-                    </datalist>
-                    <div class="invalid-feedback">
-                        <?php echo $errors['icon'] ?>
+                    <?php $metadataIcons = $trackerMetadataHelper->getTrackerIcons() ?>
+                    <div class="form-group row">
+                        <div class="col">
+                            <input name="icon" type="text" value="<?php echo $tracker['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                            <datalist id="iconDataList">
+                                <?php foreach ($metadataIcons as $metadataIcon => $metadataIconTitle) : ?>
+                                    <?php echo '<option value="' . $metadataIcon . '"' . '>' . $metadataIconTitle . '</option>' ?>
+                                <?php endforeach ?>
+                            </datalist>
+                        </div>
+                        <div class="col">
+                            <input name="icon_title" type="text" readonly value="<?php echo $metadataIcons[$tracker['icon']] ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                        </div>
+                        <div class="invalid-feedback">
+                            <?php echo $errors['icon'] ?>
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
