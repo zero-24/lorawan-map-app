@@ -31,6 +31,7 @@ header("content-security-policy: default-src 'self';");
         <meta name="theme-color" content="#ffffff">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../media/css/bootstrap.min.css" integrity="sha384-T8BvL2pDN59Kgod7e7p4kesUb+oyQPt3tFt8S+sIa0jUenn1byQ97GBKHUN8ZPk0" crossorigin="anonymous">
+        <link rel="stylesheet" href="../media/css/fontawesome.css" />
     </head>
     <body>
         <div class="container">
@@ -45,6 +46,7 @@ header("content-security-policy: default-src 'self';");
                     <tr>
                         <th>Tracker ID</th>
                         <th>Title</th>
+                        <th>Icon</th>
                         <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Callsign</th>
                         <th>Groupleader</th>
                         <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Strength</th>
@@ -56,6 +58,7 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $tracker['device_id'] ?></td>
                             <td><?php echo $tracker['title'] ?></td>
+                            <td><i class="fa-solid fa-<?php echo $tracker['icon'] ?>"></i></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['callsign'] ?></td>
                             <td><?php echo $tracker['groupleader'] ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>

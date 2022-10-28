@@ -20,6 +20,22 @@ foreach ($gpsData as $gpsPoint)
 {
     $mappingFound = false;
 
+    // Icon mapping
+    $updateColor = 'blue';
+
+    $gpsTime = new DateTime($gpsPoint['date'] . ' ' . $gpsPoint['time']);
+    $nowTime = new DateTime();
+
+    // Substract from "now" the configured grace time
+    $nowSubGracetime = $nowTime->sub(date_interval_create_from_date_string(MARKER_GRACE_TIME));
+
+    // Compare the timestamps whether the gps time is within the grace time
+    if ($gpsTime->getTimestamp() < $nowSubGracetime->getTimestamp())
+    {
+        // Make the icon red when the time has been exceeded
+        $updateColor = 'red';
+    }
+
     $popupText = MARKER_POPUP_TEXT_TEMPLATE;
     $popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
     $popupText = str_replace('{time}', $gpsPoint['time'], $popupText);
@@ -36,6 +52,8 @@ foreach ($gpsData as $gpsPoint)
             $popupText = str_replace('{callsign}', $tracker['callsign'], $popupText);
             $popupText = str_replace('{strength}', $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>', $popupText);
 
+            $icon = $tracker['icon'];
+
             continue;
         }
     }
@@ -49,26 +67,13 @@ foreach ($gpsData as $gpsPoint)
         $popupText = str_replace('{groupleader}', 'Unknown Group Leader', $popupText);
         $popupText = str_replace('{callsign}', 'Unknown Callsign', $popupText);
         $popupText = str_replace('{strength}', '? / ? / ? // <b>??</b>', $popupText);
-    }
 
-    // Icon mapping
-    $icon = 'blue';
-
-    $gpsTime = new DateTime($gpsPoint['date'] . ' ' . $gpsPoint['time']);
-    $nowTime = new DateTime();
-
-    // Substract from "now" the configured grace time
-    $nowSubGracetime = $nowTime->sub(date_interval_create_from_date_string(MARKER_GRACE_TIME));
-
-    // Compare the timestamps whether the gps time is within the grace time
-    if ($gpsTime->getTimestamp() < $nowSubGracetime->getTimestamp())
-    {
-        // Make the icon red when the time has been exceeded
-        $icon = 'red';
+        $icon = 'question';
+        $updateColor = 'black';
     }
 
     // Add markers to the return array
-    $markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $icon];
+    $markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $updateColor, $icon];
 }
 
 $points = $pointDataHelper->getPoints();
@@ -88,11 +93,11 @@ foreach ($points as $point)
     $popupText = str_replace('{pointleader}', $point['pointleader'], $popupText);
     $popupText = str_replace('{strength}', $point['strength_leader'] . ' / ' . $point['strength_groupleader'] . ' / ' . $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>', $popupText);
 
-    // Make the icon red when the time has been exceeded
-    $icon = 'red';
+    // Set the fixed points to black
+    $updateColor = 'black';
 
     // Add markers to the return array
-    $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $icon];
+    $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $updateColor, $point['icon']];
 }
 
 // Output the json

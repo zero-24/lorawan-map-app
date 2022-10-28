@@ -92,6 +92,10 @@ if (!$point)
                     <th>Group:</th>
                     <td><?php echo $point['group'] ?></td>
                 </tr>
+                <tr>
+                    <th>Icon:</th>
+                    <td><i class="fa-solid fa-<?php echo $point['icon'] ?>"></i></td>
+                </tr>
                 </tbody>
             </table>
         </div>

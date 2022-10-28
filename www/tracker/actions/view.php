@@ -76,6 +76,10 @@ if (!$tracker)
                     <th>Strength:</th>
                     <td><?php echo $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
                 </tr>
+                <tr>
+                    <th>Icon:</th>
+                    <td><i class="fa-solid fa-<?php echo $tracker['icon'] ?>"></i></td>
+                </tr>
                 </tbody>
             </table>
         </div>

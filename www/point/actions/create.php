@@ -26,6 +26,7 @@ $point = [
     'strength_leader'      => '',
     'strength_groupleader' => '',
     'strength_helper'      => '',
+    'icon'                 => '',
 ];
 
 $errors = [
@@ -41,6 +42,7 @@ $errors = [
     'strength_leader'      => '',
     'strength_groupleader' => '',
     'strength_helper'      => '',
+    'icon'                 => '',
 ];
 
 $isValid = true;

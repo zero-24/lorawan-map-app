@@ -16,7 +16,7 @@
                     <?php if ($tracker['device_id']) : ?>
                         <input name="device_id" type="text" readonly value="<?php echo $tracker['device_id'] ?>" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
                     <?php else : ?>
-                        <input name="device_id" type="text" list="trackerGpsData" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
+                        <input name="device_id" type="text" list="trackerGpsData" value="<?php echo $input->get->getString('id', '') ?>" class="form-control <?php echo $errors['device_id'] ? 'is-invalid' : '' ?>">
                         <datalist id="trackerGpsData">
                             <?php $gpsData = $trackerGpsDataHelper->getGpsData() ?>
                             <?php foreach ($gpsData as $gpsPoint) : ?>
@@ -82,6 +82,19 @@
                                 <?php echo $errors['strength_helper'] ?>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Icon</label>
+                    <input name="icon" type="text" value="<?php echo $tracker['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                    <datalist id="iconDataList">
+                        <?php $metadataIcons = $trackerMetadataHelper->getTrackerIcons() ?>
+                        <?php foreach ($metadataIcons as $metadataIcon) : ?>
+                            <?php echo '<option value="' . $metadataIcon . '"' . '>' . $metadataIcon . '</option>' ?>
+                        <?php endforeach ?>
+                    </datalist>
+                    <div class="invalid-feedback">
+                        <?php echo $errors['icon'] ?>
                     </div>
                 </div>
                 <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">

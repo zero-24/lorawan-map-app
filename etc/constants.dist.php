@@ -43,3 +43,26 @@ define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{groupleader}<br>{streng
 
 // The text template to be displayed in the popup for fixed points
 define('MARKER_POPUP_POINT_TEXT_TEMPLATE', '<b>{title}</b><br>{pointleader}<br>{strength}<br>{callsign}<br>{longtext}<br><small>Group: {group}</small>');
+
+// The Marker Icons Suggestion
+define('MARKER_ICON_ARRAY_SUGGESTION', [
+    'house',
+    'house-fire',
+    'house-medical',
+    'house-medical-flag',
+    'house-user',
+    'truck-medical',
+    'truck-ramp',
+    'truck-ramp-box',
+    'van-shuttle',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+]);

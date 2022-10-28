@@ -1,3 +1,16 @@
 .map-height {
     height: 99%;
 }
+.markerDivIcon {
+    text-align: center; /* Horizontally center the text (icon) */
+    line-height: 20px; /* Vertically center the text (icon) */
+}
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.black {
+    color: black;
+}

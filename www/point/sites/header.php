@@ -13,5 +13,6 @@
         <meta name="theme-color" content="#ffffff">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../../media/css/bootstrap.min.css" integrity="sha384-T8BvL2pDN59Kgod7e7p4kesUb+oyQPt3tFt8S+sIa0jUenn1byQ97GBKHUN8ZPk0" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../media/css/fontawesome.css" />
     </head>
     <body>

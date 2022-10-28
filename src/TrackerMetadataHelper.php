@@ -86,6 +86,26 @@ class TrackerMetadataHelper
     }
 
     /**
+     * Get already used Icons
+     *
+     * @return  array  List with all groups that have been setup already
+     *
+     * @since   1.0
+     */
+    public function getTrackerIcons()
+    {
+        $trackers      = $this->getTrackers();
+        $trackerIcons  = MARKER_ICON_ARRAY_SUGGESTION;
+
+        foreach ($trackers as $tracker)
+        {
+            $trackerIcons[] = $tracker['icon'];
+        }
+
+        return array_unique($trackerIcons);
+    }
+
+    /**
      * Add a new tracker to the json file
      *
      * @param   array  $data  Tracker data posted to the app
@@ -247,6 +267,12 @@ class TrackerMetadataHelper
         {
             $isValid = false;
             $errors['strength_helper'] = 'The number of strength_helpers are mandatory' . '<br>';
+        }
+
+        if (!$tracker['icon'])
+        {
+            $isValid = false;
+            $errors['icon'] = 'Icon is mandatory';
         }
         // End Of validation
 

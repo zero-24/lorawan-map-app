@@ -12,6 +12,7 @@
         "latitude": 50.807055437092416,
         "longitude": 7.133818209246689,
         "visibility": 1,
-        "group": "DRK"
+        "group": "DRK",
+        "icon": "house-medical-flag"
     }
 ]

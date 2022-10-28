@@ -82,6 +82,26 @@ class PointDataHelper
     }
 
     /**
+     * Get already used Icons
+     *
+     * @return  array  List with all groups that have been setup already
+     *
+     * @since   1.0
+     */
+    public function getPointIcons()
+    {
+        $points      = $this->getPoints();
+        $pointIcons  = MARKER_ICON_ARRAY_SUGGESTION;
+
+        foreach ($points as $point)
+        {
+            $pointIcons[] = $point['icon'];
+        }
+
+        return array_unique($pointIcons);
+    }
+
+    /**
      * Get one specific tracker datapoint from the text mapping file
      *
      * @param   string  $pointId  Tracker device ID
@@ -197,9 +217,9 @@ class PointDataHelper
     /**
      * Validate the data passed to the app
      *
-     * @param   array  &$point   The data to be validated (referenced)
-     * @param   array  &$errors  The errors collected while validating (referenced)
-     * @param   string  $type      String wether we are in 'edit' or 'create' mode
+     * @param   array   &$point   The data to be validated (referenced)
+     * @param   array   &$errors  The errors collected while validating (referenced)
+     * @param   string  $type     String wether we are in 'edit' or 'create' mode
      *
      * @return  bool
      *
@@ -292,6 +312,12 @@ class PointDataHelper
         {
             $isValid = false;
             $errors['group'] = 'Group is mandatory and has to be a string';
+        }
+
+        if (!$point['icon'])
+        {
+            $isValid = false;
+            $errors['icon'] = 'Icon is mandatory';
         }
         // End Of validation
 

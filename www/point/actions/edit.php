@@ -47,6 +47,7 @@ $errors = [
     'strength_leader'      => '',
     'strength_groupleader' => '',
     'strength_helper'      => '',
+    'icon'                 => '',
 ];
 
 $isValid = true;

@@ -31,6 +31,7 @@ header("content-security-policy: default-src 'self';");
         <meta name="theme-color" content="#ffffff">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../media/css/bootstrap.min.css" integrity="sha384-T8BvL2pDN59Kgod7e7p4kesUb+oyQPt3tFt8S+sIa0jUenn1byQ97GBKHUN8ZPk0" crossorigin="anonymous">
+        <link rel="stylesheet" href="../media/css/fontawesome.css" />
     </head>
     <body>
         <div class="container">
@@ -45,6 +46,7 @@ header("content-security-policy: default-src 'self';");
                     <tr>
                         <th>Point ID</th>
                         <th>Title</th>
+                        <th>Icon</th>
                         <th>Visibility</th>
                         <th class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">Callsign</th>
                         <th>Group</th>
@@ -56,6 +58,7 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $point['point_id'] ?></td>
                             <td><?php echo $point['title'] ?></td>
+                            <td><i class="fa-solid fa-<?php echo $point['icon'] ?>"></i></td>
                             <td><?php echo $point['visibility'] == 'visible' || $point['visibility'] == '' ? 'Visible' : 'Hidden' ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['callsign'] ?></td>
                             <td><?php echo $point['group'] ?></td>

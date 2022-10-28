@@ -119,6 +119,19 @@
                         <?php echo $errors['group'] ?>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label>Icon</label>
+                    <input name="icon" type="text" value="<?php echo $point['icon'] ?>" list="iconDataList" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                    <datalist id="iconDataList">
+                        <?php $pointIcons = $pointDataHelper->getPointIcons() ?>
+                        <?php foreach ($pointIcons as $pointIcon) : ?>
+                            <?php echo '<option value="' . $pointIcon . '"' . '>' . $pointIcon . '</option>' ?>
+                        <?php endforeach ?>
+                    </datalist>
+                    <div class="invalid-feedback">
+                        <?php echo $errors['icon'] ?>
+                    </div>
+                </div>
                 <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
                 <button type="submit" class="btn btn-success">Save</button>
                 <a class="btn btn-info" href="../index.php?site_secret=<?php echo SITE_SECRET ?>">Cancel</a>

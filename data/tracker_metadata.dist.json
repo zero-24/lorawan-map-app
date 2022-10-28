@@ -8,6 +8,7 @@
         "strength_leader": 0,
         "strength_groupleader": 1,
         "strength_helper": 2,
-        "strength": 3
+        "strength": 3,
+        "icon": "1"
     }
 ]
