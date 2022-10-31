@@ -53,7 +53,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
         <!-- CSS & JavaScript -->
         <link rel="stylesheet" href="../media/css/leaflet.css" />
         <link rel="stylesheet" href="../media/css/app.css" />
-        <link rel="stylesheet" href="../media/css/bootstrap.min.css" integrity="sha384-T8BvL2pDN59Kgod7e7p4kesUb+oyQPt3tFt8S+sIa0jUenn1byQ97GBKHUN8ZPk0" crossorigin="anonymous">
+        <link rel="stylesheet" href="../media/css/bootstrap.min.css" integrity="sha384-2diKOETIi1xfrzQsm1wbWyFuiEELWcgL5bZMfLj0fZPSNrBaPVYW5sZfu2hBpKve" crossorigin="anonymous">
         <link rel="stylesheet" href="../media/css/fontawesome.css" />
         <script type="text/javascript" src="../media/js/leaflet.js"></script>
         <!-- Map generation code -->
