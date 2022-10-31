@@ -77,8 +77,7 @@ class FileHelper
     /**
      * Get list of files in the data directory
      *
-     * @param   string  $fileName  The name of the json file without the extension
-     * @param   array   $json      The json data as array
+     * @param   string  $filter  The filter to be passed to the glob function
      *
      * @since   1.0
      */
@@ -86,7 +85,8 @@ class FileHelper
     {
         $fileNames = [];
 
-        foreach (glob($this->dataFolder . '/' . $filter) as $fileName) {
+        foreach (glob($this->dataFolder . '/' . $filter) as $fileName)
+        {
             $fileNames[] = \str_replace($this->dataFolder . '/', '', $fileName);
         }
 

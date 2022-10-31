@@ -139,11 +139,9 @@ class TrackerGpsDataHelper
     }
 
     /**
-     * Get one specific gps datapoint from the json file
+     * Get the stored GPS filenames
      *
-     * @param   string  $deviceId  Tracker device ID
-     *
-     * @return  object|null  Decoded JSON object with the requested gps data information or null
+     * @return  array  An array of all stored tracker gpsdata files
      *
      * @since   1.0
      */

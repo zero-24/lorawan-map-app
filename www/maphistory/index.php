@@ -1,8 +1,8 @@
 <?php
 /**
- * Main entry point for the application
+ * Main entry point for the historic map application
  *
- * @copyright  Copyright (C) 2021 Tobias Zulauf. All rights reserved.
+ * @copyright  Copyright (C) 2022 Tobias Zulauf. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
@@ -25,6 +25,7 @@ foreach ($gpsData as $gpsPoint)
     $points[] = [$gpsPoint['latitude'], $gpsPoint['longitude']];
 }
 
+// Fallback when there are no data get from the history file
 if (empty($points))
 {
     $points[] = ['50.8070725023327','7.133824179895859'];
@@ -39,7 +40,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 ?>
 <html>
     <head>
-        <title><?php echo SITE_TITLE; ?></title>
+        <title><?php echo SITE_TITLE_HISTORIC_MAP_APP; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="robots" content="<?php echo SITE_ROBOTS; ?>">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
@@ -273,7 +274,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                         {
                             if (this.status >= 200 && this.status < 400)
                             {
-                                // Remove the existing device layers
+                                // Remove the existing polyline layers
                                 map.eachLayer(function(layer)
                                 {
                                     if (layer.hasOwnProperty('polylineIndicator'))
@@ -282,6 +283,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     }
                                 });
 
+                                // Reciver the polylines from the JSON response
                                 var polylines = JSON.parse(this.response);
 
                                 if (polylines.length === 0)
@@ -338,7 +340,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
         </script>
     </head>
     <body>
-        <select class="custom-select" max-width="30%" id="mapDateSelect">
+        <select class="custom-select" id="mapDateSelect">
             <?php $date = $input->getString('date', date("Ymd")); ?>
             <option selected value="<?php echo $date ?>">Choose date to analyse</option>
             <?php $fileNames = $trackerGpsDataHelper->getStoredGpsPointFileNames(); ?>

@@ -94,8 +94,8 @@ class TrackerMetadataHelper
      */
     public function getTrackerIcons()
     {
-        $trackers      = $this->getTrackers();
-        $trackerIcons  = MARKER_ICON_ARRAY_SUGGESTION;
+        $trackers     = $this->getTrackers();
+        $trackerIcons = MARKER_ICON_ARRAY_SUGGESTION;
 
         foreach ($trackers as $tracker)
         {
@@ -146,7 +146,7 @@ class TrackerMetadataHelper
     public function editTracker($data, $deviceId)
     {
         $editTracker = [];
-        $trackers = $this->getTrackers();
+        $trackers    = $this->getTrackers();
 
         foreach ($trackers as $i => $tracker)
         {

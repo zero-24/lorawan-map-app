@@ -32,6 +32,9 @@ define('SITE_TITLE_GPSDATA_APP', '');
 // The site title for the Point Data app to be shown on the page
 define('SITE_TITLE_POINT_APP', '');
 
+// The site title for the Point Data app to be shown on the page
+define('SITE_TITLE_HISTORIC_MAP_APP', '');
+
 // Change the robots options
 define('SITE_ROBOTS', 'noindex, nofollow');
 

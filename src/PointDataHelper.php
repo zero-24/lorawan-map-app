@@ -90,8 +90,8 @@ class PointDataHelper
      */
     public function getPointIcons()
     {
-        $points      = $this->getPoints();
-        $pointIcons  = MARKER_ICON_ARRAY_SUGGESTION;
+        $points     = $this->getPoints();
+        $pointIcons = MARKER_ICON_ARRAY_SUGGESTION;
 
         foreach ($points as $point)
         {
@@ -166,7 +166,7 @@ class PointDataHelper
     public function editPoint($data, $pointId)
     {
         $editPoint = [];
-        $points = $this->getPoints();
+        $points    = $this->getPoints();
 
         foreach ($points as $i => $point)
         {

@@ -1,8 +1,8 @@
 <?php
 /**
- * Ajax entry point for the application
+ * Ajax entry point for the markers
  *
- * @copyright  Copyright (C) 2021 Tobias Zulauf. All rights reserved.
+ * @copyright  Copyright (C) 2022 Tobias Zulauf. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
