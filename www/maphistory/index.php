@@ -212,7 +212,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
                                 if (markers.length === 0)
                                 {
-                                    console.log('No Data for: ' + apiDate);
+                                    console.log('No Marker Data for: ' + apiDate);
                                     return;
                                 }
 
@@ -286,7 +286,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
                                 if (polylines.length === 0)
                                 {
-                                    console.log('No Data for: ' + apiDate);
+                                    console.log('No Polyline Data for: ' + apiDate);
                                     return;
                                 }
 
