@@ -62,6 +62,29 @@ class TrackerGpsDataHelper
     }
 
     /**
+     * Get all GPS Data IDs from the json file
+     *
+     * @return  string  Decoded JSON object with all GPS information
+     *
+     * @since   1.0
+     */
+    public function getGpsDataIds()
+    {
+        $gpsData = $this->getGpsData();
+        $gpsDataIds = [];
+
+        foreach ($gpsData as $gpsPoint)
+        {
+            if (!isset($gpsDataIds[$gpsPoint['device_id']]))
+            {
+                $gpsDataIds[$gpsPoint['device_id']] = $gpsPoint['device_id'];
+            }
+        }
+
+        return $gpsDataIds;
+    }
+
+    /**
      * Get one specific gps datapoint from the json file
      *
      * @param   string  $deviceId  Tracker device ID

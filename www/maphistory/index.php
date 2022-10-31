@@ -210,8 +210,6 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     }
                                 });
 
-                                var latlngs = Array();
-
                                 if (markers.length === 0)
                                 {
                                     console.log('No Data for: ' + apiDate);
@@ -224,6 +222,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     var markerUpdateColor = markers[i][4];
                                     var markerIconClass = markers[i][5];
 
+                                    var trackerId = markers[i][0];
                                     var deviceId = markers[i][0] + i;
                                     var lat = markers[i][1];
                                     var lon = markers[i][2];
@@ -242,30 +241,12 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     map.addLayer(marker);
                                     marker.bindPopup(popupText);
 
-                                    // Get latlng from marker and add it to the array
-                                    latlngs.push(marker.getLatLng());
-
                                     // Open the marker when it was open before the refresh
                                     if (marker.device_id == openDeviceId)
                                     {
                                         marker.openPopup();
                                     }
                                 }
-
-                                // From documentation https://leafletjs.com/reference.html#polyline
-                                // Create a black polyline from an arrays of LatLng points
-                                var polyline = L.polyline(latlngs, {color: markerUpdateColor});
-                                polyline.device_id = deviceId;
-
-                                map.addLayer(polyline);
-
-                                if (updateFitMap == true)
-                                {
-                                    // Zoom the map to the polyline
-                                    map.fitBounds(polyline.getBounds());
-                                }
-
-                                polyline.apiDate = apiDate;
                             }
                             else
                             {
@@ -281,6 +262,61 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                         };
 
                         xhr.send();
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', 'api/polyline.php', true);
+                        xhr.setRequestHeader('content-type', 'application/json');
+                        xhr.setRequestHeader('api-date', apiDate);
+                        xhr.setRequestHeader('api-token', '<?php echo API_TOKEN ?>');
+
+                        xhr.onload = function()
+                        {
+                            if (this.status >= 200 && this.status < 400)
+                            {
+                                // Remove the existing device layers
+                                map.eachLayer(function(layer)
+                                {
+                                    if (layer.hasOwnProperty('polylineIndicator'))
+                                    {
+                                        map.removeLayer(layer);
+                                    }
+                                });
+
+                                var polylines = JSON.parse(this.response);
+
+                                if (polylines.length === 0)
+                                {
+                                    console.log('No Data for: ' + apiDate);
+                                    return;
+                                }
+
+                                // From documentation https://leafletjs.com/reference.html#polyline
+                                // Create a black polyline from an arrays of LatLng points
+                                var polyline = L.polyline(polylines, {color: 'black'});
+                                polyline.polylineIndicator = 'polyline';
+
+                                map.addLayer(polyline);
+
+                                if (updateFitMap == true)
+                                {
+                                    // Zoom the map to the polyline
+                                    map.fitBounds(polyline.getBounds());
+                                }
+                            }
+                            else
+                            {
+                                console.log('Could not load the polyline api endpoint');
+                                return;
+                            }
+                        };
+
+                        xhr.onerror = function()
+                        {
+                            console.log('Could not load the polyline api endpoint');
+                            return;
+                        };
+
+                        xhr.send();
                     }
 
                     // Set the inital markers
@@ -289,6 +325,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     // Update the markers every said seconds
                     window.setInterval(updateMarkers, <?php echo $markerRefresh; ?>);
 
+                    // Update the markers once a new date has been selected
                     document.getElementById('mapDateSelect').addEventListener(
                         'change',
                         function() {
