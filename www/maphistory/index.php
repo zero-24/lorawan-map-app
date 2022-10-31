@@ -6,7 +6,7 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../includes/mapApp.php';
+include '../../includes/mapHistoryApp.php';
 
 if ($input->getString('site_secret', false) !== SITE_SECRET)
 {
@@ -17,7 +17,17 @@ $gpsData = $trackerGpsDataHelper->getGpsData();
 
 foreach ($gpsData as $gpsPoint)
 {
+    if ($gpsPoint['latitude'] === '-90' || $gpsPoint['longitude'] === '-100')
+    {
+        continue;
+    }
+
     $points[] = [$gpsPoint['latitude'], $gpsPoint['longitude']];
+}
+
+if (empty($points))
+{
+    $points[] = ['50.8070725023327','7.133824179895859'];
 }
 
 // Calculate the resfresh time for the markers
@@ -43,6 +53,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
         <!-- CSS & JavaScript -->
         <link rel="stylesheet" href="../media/css/leaflet.css" />
         <link rel="stylesheet" href="../media/css/app.css" />
+        <link rel="stylesheet" href="../media/css/bootstrap.min.css" integrity="sha384-T8BvL2pDN59Kgod7e7p4kesUb+oyQPt3tFt8S+sIa0jUenn1byQ97GBKHUN8ZPk0" crossorigin="anonymous">
         <link rel="stylesheet" href="../media/css/fontawesome.css" />
         <script type="text/javascript" src="../media/js/leaflet.js"></script>
         <!-- Map generation code -->
@@ -122,7 +133,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     }
                     });
 
-                    var historicalMapButton = L.Control.extend({
+                    var regularMapButton = L.Control.extend({
                     options: {
                         position: 'topleft'
                     },
@@ -130,8 +141,8 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     onAdd: function (map) {
                         var container = L.DomUtil.create('input');
                         container.type = 'button';
-                        container.title = 'Historical GPS Data';
-                        container.value = 'HM';
+                        container.title = 'Regular Map';
+                        container.value = 'RM';
                         container.style.backgroundSize = '30px 30px';
                         container.style.width = '35px';
                         container.style.height = '35px';
@@ -139,13 +150,12 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                         container.className = 'leaflet-bar';
 
                         container.onclick = function() {
-                            window.open('../maphistory/index.php?site_secret=<?php echo SITE_SECRET ?>', '_self');
+                            window.open('../map/index.php?site_secret=<?php echo SITE_SECRET ?>', '_self');
                         }
 
                         return container;
                     }
                     });
-
 
                     var map = new L.Map('map');
 
@@ -158,7 +168,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     map.addControl(new editTrackerButton());
                     map.addControl(new viewGpsDataButton());
                     map.addControl(new editPointButton());
-                    map.addControl(new historicalMapButton());
+                    map.addControl(new regularMapButton());
 
                     // Focus on the the inital set of points
                     map.fitBounds(<?php echo json_encode($points); ?>);
@@ -168,11 +178,14 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     *
                     * @return {void}
                     */
-                    function updateMarkers()
+                    function updateMarkers(updateFitMap = false)
                     {
+                        const apiDate = document.getElementById('mapDateSelect').value;
+
                         var xhr = new XMLHttpRequest();
                         xhr.open('GET', 'api/makers.php', true);
                         xhr.setRequestHeader('content-type', 'application/json');
+                        xhr.setRequestHeader('api-date', apiDate);
                         xhr.setRequestHeader('api-token', '<?php echo API_TOKEN ?>');
 
                         xhr.onload = function()
@@ -192,9 +205,18 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                         {
                                             openDeviceId = layer.device_id;
                                         }
+
                                         map.removeLayer(layer);
                                     }
                                 });
+
+                                var latlngs = Array();
+
+                                if (markers.length === 0)
+                                {
+                                    console.log('No Data for: ' + apiDate);
+                                    return;
+                                }
 
                                 // Loop through the markers array
                                 for (var i = 0; i < markers.length; i++)
@@ -202,7 +224,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     var markerUpdateColor = markers[i][4];
                                     var markerIconClass = markers[i][5];
 
-                                    var deviceId = markers[i][0];
+                                    var deviceId = markers[i][0] + i;
                                     var lat = markers[i][1];
                                     var lon = markers[i][2];
                                     var popupText = markers[i][3];
@@ -220,12 +242,30 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     map.addLayer(marker);
                                     marker.bindPopup(popupText);
 
+                                    // Get latlng from marker and add it to the array
+                                    latlngs.push(marker.getLatLng());
+
                                     // Open the marker when it was open before the refresh
                                     if (marker.device_id == openDeviceId)
                                     {
                                         marker.openPopup();
                                     }
                                 }
+
+                                // From documentation https://leafletjs.com/reference.html#polyline
+                                // Create a black polyline from an arrays of LatLng points
+                                var polyline = L.polyline(latlngs, {color: 'black'});
+                                polyline.device_id = deviceId;
+
+                                map.addLayer(polyline);
+
+                                if (updateFitMap == true)
+                                {
+                                    // Zoom the map to the polyline
+                                    map.fitBounds(polyline.getBounds());
+                                }
+
+                                polyline.apiDate = apiDate;
                             }
                             else
                             {
@@ -248,12 +288,27 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
                     // Update the markers every said seconds
                     window.setInterval(updateMarkers, <?php echo $markerRefresh; ?>);
+
+                    document.getElementById('mapDateSelect').addEventListener(
+                        'change',
+                        function() {
+                            updateMarkers(true)
+                        }
+                    );
                 },
                 false
             );
         </script>
     </head>
     <body>
-        <div id="map" class="map-height"></div>
+        <select class="custom-select" max-width="30%" id="mapDateSelect">
+            <?php $date = $input->getString('date', date("Ymd")); ?>
+            <option selected value="<?php echo $date ?>">Choose date to analyse</option>
+            <?php $fileNames = $trackerGpsDataHelper->getStoredGpsPointFileNames(); ?>
+            <?php foreach ($fileNames as $filename) : ?>
+                <option value="<?php echo $filename ?>"><?php echo $filename ?></option>
+            <?php endforeach ?>
+        </select>
+        <div id="map" class="map-height-analyse"></div>
     </body>
 </html>

@@ -40,6 +40,7 @@ header("content-security-policy: default-src 'self';");
                 <a class="btn btn-dark" href="../map/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Map</a>
                 <a class="btn btn-dark" href="../tracker/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Tracker App</a>
                 <a class="btn btn-dark" href="../gpsdata/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to GPS Data App</a>
+                <a class="btn btn-dark" href="../maphistory/index.php?site_secret=<?php echo SITE_SECRET ?>">Go to Historical GPS Data App</a>
             </p>
             <table class="table">
                 <thead>

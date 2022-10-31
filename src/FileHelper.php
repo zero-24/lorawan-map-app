@@ -73,4 +73,23 @@ class FileHelper
 
         return file_put_contents($file, $json);
     }
+
+    /**
+     * Get list of files in the data directory
+     *
+     * @param   string  $fileName  The name of the json file without the extension
+     * @param   array   $json      The json data as array
+     *
+     * @since   1.0
+     */
+    public function getJsonFilesWithinDataFolder($filter)
+    {
+        $fileNames = [];
+
+        foreach (glob($this->dataFolder . '/' . $filter) as $fileName) {
+            $fileNames[] = \str_replace($this->dataFolder . '/', '', $fileName);
+        }
+
+        return $fileNames;
+    }
 }

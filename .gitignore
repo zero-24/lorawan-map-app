@@ -12,6 +12,7 @@ composer.lock
 /data/tracker_gpsdata.json
 /data/tracker_metadata.json
 /data/tracker_pointdata.json
+/data/*_tracker_gpsdata.json
 
 ## Ignore local favicons
 www/android-chrome-96x96.png

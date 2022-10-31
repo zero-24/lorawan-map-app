@@ -157,11 +157,11 @@
 </div>
 <script language="javascript" nonce="<?php echo $cspnonce; ?>">
     new OsmPicker({
-    inputElement: document.getElementById('location'),
-    mapElement: document.getElementById('location-map'),
-    defaultView: {
-      latLng: ['50.8070725023327', '7.133824179895859'],
-      zoom: 18,
-    }
-  });
+        inputElement: document.getElementById('location'),
+        mapElement: document.getElementById('location-map'),
+        defaultView: {
+        latLng: ['50.8070725023327', '7.133824179895859'],
+        zoom: 18,
+        }
+    });
 </script>

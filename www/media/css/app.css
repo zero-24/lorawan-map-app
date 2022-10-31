@@ -1,6 +1,9 @@
 .map-height {
     height: 99%;
 }
+.map-height-analyse {
+    height: 95%;
+}
 .markerDivIcon {
     text-align: center; /* Horizontally center the text (icon) */
     line-height: 20px; /* Vertically center the text (icon) */

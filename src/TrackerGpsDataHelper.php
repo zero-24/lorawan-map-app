@@ -114,4 +114,26 @@ class TrackerGpsDataHelper
             )
         );
     }
+
+    /**
+     * Get one specific gps datapoint from the json file
+     *
+     * @param   string  $deviceId  Tracker device ID
+     *
+     * @return  object|null  Decoded JSON object with the requested gps data information or null
+     *
+     * @since   1.0
+     */
+    public function getStoredGpsPointFileNames()
+    {
+        $storedJsonFiles = $this->fileHelper->getJsonFilesWithinDataFolder('*_tracker_gpsdata.json');
+
+        foreach ($storedJsonFiles as $storedJsonFile)
+        {
+            $storedJsonFile = \str_replace('_tracker_gpsdata.json', '', $storedJsonFile);
+            $storedGpsPointFileNames[$storedJsonFile] = $storedJsonFile;
+        }
+
+        return $storedGpsPointFileNames ? $storedGpsPointFileNames : [];
+    }
 }

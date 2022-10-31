@@ -44,6 +44,9 @@ define('MARKER_POPUP_TEXT_TEMPLATE', '<b>{title}</b><br>{groupleader}<br>{streng
 // The text template to be displayed in the popup for fixed points
 define('MARKER_POPUP_POINT_TEXT_TEMPLATE', '<b>{title}</b><br>{pointleader}<br>{strength}<br>{callsign}<br>{longtext}<br><small>Group: {group}</small>');
 
+// The text template to be displayed in the popup for fixed points
+define('MARKER_POPUP_HISTORY_TEXT_TEMPLATE', '<b>{deviceId}</b><br>Updated: {date} {time}');
+
 // The Marker Icons Suggestion
 define('MARKER_ICON_ARRAY_SUGGESTION', [
     'tower-control' => 'Führungstelle',

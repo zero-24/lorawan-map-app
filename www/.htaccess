@@ -19,5 +19,5 @@
     # Cross-Origin-Opener-Policy
     Header always set Cross-Origin-Opener-Policy "same-origin"
     # Permissions-Policy
-    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
 </IfModule>
