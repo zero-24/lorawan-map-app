@@ -52,7 +52,7 @@ foreach ($gpsData as $gpsPoint)
  *   )
  * );
  * We archive this by using dynamic variable names (https://www.php.net/manual/en/language.variables.variable.php)
- * So first we loop over the existing markers adding all lat/lon array's mapping into an array of the coresponging $device_id
+ * So first we loop over the existing markers adding all lat/lon array's mapping into an array of the coresponding $device_id
  * The seccond foreach starts with the list of all device_id's we know form the data
  * From there we join the dynamic variables created before into the $polyline result array
  */
