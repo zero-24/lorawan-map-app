@@ -14,3 +14,16 @@
 .black {
     color: black;
 }
+.map-picker {
+    height: 300px;
+    cursor: crosshair;
+}
+.map-readonly {
+    height: 300px;
+}
+.inline-block {
+    display: inline-block;
+}
+.hidden {
+    display: none;
+}

@@ -43,7 +43,7 @@ if (!$gpsPoint || !$tracker)
                 <h3>View GPS Point: <b><?php echo $tracker['title'] ?></b></h3>
             </div>
             <div class="card-body">
-                <form style="display: inline-block" method="POST" action="delete.php">
+                <form class="inline-block" method="POST" action="delete.php">
                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
                     <input type="hidden" name="id" value="<?php echo $gpsPoint['device_id'] ?>">
                     <button class="btn btn-danger">Delete</button>
@@ -69,6 +69,10 @@ if (!$gpsPoint || !$tracker)
                     <td><?php echo $gpsPoint['longitude'] ?></td>
                 </tr>
                 <tr>
+                    <th>Map:</th>
+                    <td width="70%"><div id="location-map" class="map-readonly"></div></td>
+                </tr>
+                <tr>
                     <th>Altitude:</th>
                     <td><?php echo $gpsPoint['altitude'] ?></td>
                 </tr>
@@ -88,4 +92,25 @@ if (!$gpsPoint || !$tracker)
             </table>
         </div>
     </div>
+    <script language="javascript" nonce="<?php echo $cspnonce ?>">
+        window.addEventListener(
+        'DOMContentLoaded',
+        function () {
+            var map = new L.Map('location-map');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                maxZoom: 18
+            }).addTo(map);
+
+            map.fitBounds(<?php echo json_encode([[$gpsPoint['latitude'], $gpsPoint['longitude']]]) ?>);
+            map.addLayer(
+                new L.Marker(
+                    new L.LatLng(
+                        <?php echo $gpsPoint['latitude'] ?>,
+                        <?php echo $gpsPoint['longitude'] ?>
+                    )
+                )
+            );
+        });
+    </script>
 <?php include '../sites/footer.php' ?>

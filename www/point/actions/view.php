@@ -43,7 +43,7 @@ if (!$point)
             </div>
             <div class="card-body">
                 <a class="btn btn-secondary" href="edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>">Edit</a>
-                <form style="display: inline-block" method="POST" action="delete.php">
+                <form class="inline-block" method="POST" action="delete.php">
                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
                     <input type="hidden" name="id" value="<?php echo $point['point_id'] ?>">
                     <button class="btn btn-danger">Delete</button>
@@ -85,6 +85,10 @@ if (!$point)
                     <td><?php echo $point['longitude'] ?></td>
                 </tr>
                 <tr>
+                    <th>Map:</th>
+                    <td width="70%"><div id="location-map" class="map-readonly"></div></td>
+                </tr>
+                <tr>
                     <th>Visibility:</th>
                     <td><?php echo $point['visibility'] ? 'Visible' : 'Hidden' ?></td>
                 </tr>
@@ -100,4 +104,25 @@ if (!$point)
             </table>
         </div>
     </div>
+    <script language="javascript" nonce="<?php echo $cspnonce ?>">
+        window.addEventListener(
+        'DOMContentLoaded',
+        function () {
+            var map = new L.Map('location-map');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                maxZoom: 18
+            }).addTo(map);
+
+            map.fitBounds(<?php echo json_encode([[$point['latitude'], $point['longitude']]]) ?>);
+            map.addLayer(
+                new L.Marker(
+                    new L.LatLng(
+                        <?php echo $point['latitude'] ?>,
+                        <?php echo $point['longitude'] ?>
+                    )
+                )
+            );
+        });
+    </script>
 <?php include '../sites/footer.php' ?>

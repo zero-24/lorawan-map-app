@@ -43,7 +43,7 @@ if (!$tracker)
             </div>
             <div class="card-body">
                 <a class="btn btn-secondary" href="edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>">Edit</a>
-                <form style="display: inline-block" method="POST" action="delete.php">
+                <form class="inline-block" method="POST" action="delete.php">
                     <input type="hidden" name="site_secret" value="<?php echo SITE_SECRET ?>">
                     <input type="hidden" name="id" value="<?php echo $tracker['device_id'] ?>">
                     <button class="btn btn-danger">Delete</button>

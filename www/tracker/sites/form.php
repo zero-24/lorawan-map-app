@@ -97,7 +97,7 @@
                             </datalist>
                         </div>
                         <div class="col">
-                            <input name="icon_title" type="text" readonly value="<?php echo $metadataIcons[$tracker['icon']] ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                            <input name="icon_title" type="text" readonly value="<?php echo isset($metadataIcons[$tracker['icon']]) ? $metadataIcons[$tracker['icon']] : '' ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
                         </div>
                         <div class="invalid-feedback">
                             <?php echo $errors['icon'] ?>

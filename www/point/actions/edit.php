@@ -34,6 +34,23 @@ if (!$point)
     exit;
 }
 
+$pointData = [
+    'point_id'             => '',
+    'title'                => '',
+    'longtext'             => '',
+    'callsign'             => '',
+    'latitude'             => '',
+    'longitude'            => '',
+    'location'             => '',
+    'visibility'           => '',
+    'group'                => '',
+    'pointleader'          => '',
+    'strength_leader'      => '',
+    'strength_groupleader' => '',
+    'strength_helper'      => '',
+    'icon'                 => '',
+];
+
 $errors = [
     'point_id'             => '',
     'title'                => '',
@@ -54,6 +71,8 @@ $isValid = true;
 
 if ($input->getMethod() === 'POST')
 {
+    $point = array_merge($pointData, $point);
+
     foreach ($point as $key => $value)
     {
         $point[$key] = $input->getString($key);

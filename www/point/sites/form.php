@@ -77,18 +77,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Latitude</label>
-                    <input name="latitude" type="text" value="<?php echo $point['latitude'] ?>" class="form-control <?php echo $errors['latitude'] ? 'is-invalid' : '' ?>">
-                    <div class="invalid-feedback">
-                        <?php echo $errors['latitude'] ?>
+                    <div class="form-group row">
+                        <div class="col">
+                            <label>Latitude</label>
+                            <input id="latitude" name="latitude" type="text" readonly value="<?php echo $point['latitude'] ?>" class="form-control <?php echo $errors['latitude'] ? 'is-invalid' : '' ?>">
+                            <div class="invalid-feedback">
+                                <?php echo $errors['latitude'] ?>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label>Longitude</label>
+                            <input id="longitude" name="longitude" type="text" readonly value="<?php echo $point['longitude'] ?>" class="form-control <?php echo $errors['longitude'] ? 'is-invalid' : '' ?>">
+                            <div class="invalid-feedback">
+                                <?php echo $errors['longitude'] ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Longitude</label>
-                    <input name="longitude" type="text" value="<?php echo $point['longitude'] ?>" class="form-control <?php echo $errors['longitude'] ? 'is-invalid' : '' ?>">
-                    <div class="invalid-feedback">
-                        <?php echo $errors['longitude'] ?>
-                    </div>
+                    <label>Latitude / Longitude Picker</label>
+                    <div id="location-map" class="map-picker"></div>
+                    <input id="location" name="location" type="text" value="<?php echo $point['latitude'] . ',' . $point['longitude'] ?>" class="form-control hidden">
                 </div>
                 <div class="form-group">
                     <label>Visibility</label>
@@ -132,7 +141,7 @@
                             </datalist>
                         </div>
                         <div class="col">
-                            <input name="icon_title" type="text" readonly value="<?php echo $pointIcons[$point['icon']] ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
+                            <input name="icon_title" type="text" readonly value="<?php echo isset($pointIcons[$point['icon']]) ? $pointIcons[$point['icon']] : '' ?>" class="form-control <?php echo $errors['icon'] ? 'is-invalid' : '' ?>" />
                         </div>
                         <div class="invalid-feedback">
                             <?php echo $errors['icon'] ?>
@@ -146,3 +155,13 @@
         </div>
     </div>
 </div>
+<script language="javascript" nonce="<?php echo $cspnonce; ?>">
+    new OsmPicker({
+    inputElement: document.getElementById('location'),
+    mapElement: document.getElementById('location-map'),
+    defaultView: {
+      latLng: ['50.8070725023327', '7.133824179895859'],
+      zoom: 18,
+    }
+  });
+</script>

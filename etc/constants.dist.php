@@ -59,6 +59,7 @@ define('MARKER_ICON_ARRAY_SUGGESTION', [
     'house-medical-flag' => 'DRK Unterkunft',
     'location-pin' => 'Sonderpin',
     'house' => 'Wache',
+    'gas-pump' => 'Tankstelle',
     '0' => 'EVT 0',
     '1' => 'EVT 1',
     '2' => 'EVT 2',

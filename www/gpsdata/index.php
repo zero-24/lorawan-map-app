@@ -54,7 +54,7 @@ header("content-security-policy: default-src 'self';");
                         <tr>
                             <td><?php echo $gpsPoint['device_id'] ?></td>
                             <?php $tracker = $trackerMetadataHelper->getTrackerById($gpsPoint['device_id']); ?>
-                            <td><?php echo $tracker ? $tracker['title'] : '<a href="../tracker/actions/create.php?site_secret=' . SITE_SECRET . '&id=' . $gpsPoint['device_id'] . '"><b>Metadaten pflegen!</b></a>' ?></td>
+                            <td><?php echo $tracker ? $tracker['title'] : '<a href="../tracker/actions/create.php?site_secret=' . SITE_SECRET . '&id=' . $gpsPoint['device_id'] . '"><b>Create metadata!</b></a>' ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['date'] ?></td>
                             <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $gpsPoint['time'] ?></td>
                             <td>

@@ -232,6 +232,14 @@ class PointDataHelper
     {
         $isValid = true;
 
+        // Special handling for the location field
+        $location = \explode(',', $point['location']);
+
+        $point['latitude']  = $location[0];
+        $point['longitude'] = $location[1];
+        unset($point['location']);
+        // Special handling for the location field
+
         // Start of validation
         if (!$point['point_id'] || ($type === 'create' && $this->getPointById($point['point_id'])))
         {
