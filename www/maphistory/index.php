@@ -254,7 +254,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
 
                                 // From documentation https://leafletjs.com/reference.html#polyline
                                 // Create a black polyline from an arrays of LatLng points
-                                var polyline = L.polyline(latlngs, {color: 'black'});
+                                var polyline = L.polyline(latlngs, {color: markerUpdateColor});
                                 polyline.device_id = deviceId;
 
                                 map.addLayer(polyline);
