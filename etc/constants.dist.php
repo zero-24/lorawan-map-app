@@ -54,7 +54,7 @@ define('MARKER_ICON_ARRAY_SUGGESTION', [
     'tent' => 'UHS',
     'hospital' => 'Krankenhaus',
     'truck-medical' => 'KTW / RTW',
-    'truck-ramp' => 'MZF',
+    'truck-ramp-box' => 'MZF',
     'van-shuttle' => 'MTF',
     'people-roof' => 'Notunterkunft',
     'location-crosshairs' => 'Einsatzstelle',
