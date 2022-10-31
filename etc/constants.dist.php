@@ -11,6 +11,9 @@ define('ROOT_PATH', dirname(__DIR__));
 // The secret to be passed by the remote server
 define('UPLINK_SECRET', '');
 
+// The setting whether the data should be stored to be analysed later.
+define('UPLINK_STORE_DATA', false);
+
 // The site secret to be passed to be allowed to access the page
 define('SITE_SECRET', '');
 

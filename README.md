@@ -1,11 +1,11 @@
 # DRK LoRaWAN Map App
 
-This is an LoRaWAN Map App which implements an public facing interface for the [LoRaWAN GPS Tracker](https://www.aeq-web.com/lorawan-gps-tracker-the-things-stack-tts-application-server/) using leaflet and OpenStreetMap. The JSON File Apps are based losely on [thecodeholic/PHPSimpleCRUD-FS](https://github.com/thecodeholic/PHPSimpleCRUD-FS), the map picker on [dekvidet/osm-picker](https://github.com/dekvidet/osm-picker).
+This is an LoRaWAN Map App which implements an public facing interface for the [LoRaWAN GPS Tracker](https://www.aeq-web.com/lorawan-gps-tracker-the-things-stack-tts-application-server/) using [leaflet](https://leafletjs.com/) and [OpenStreetMap](https://www.openstreetmap.org/). The JSON File Apps are based losely on [thecodeholic/PHPSimpleCRUD-FS](https://github.com/thecodeholic/PHPSimpleCRUD-FS), the map picker used is [dekvidet/osm-picker](https://github.com/dekvidet/osm-picker).
 
 ## How it works
 
 The data of the LoRaWAN Trackers get passed to the "uplink.php" file which stores them in the `tracker_gpsdata.json` file, with the `tracker_metadata.json` additional texts for the tracker device IDs can be stored. From that two files the map application gets its data to be displyed on the OSM Map.
-Using the Tracker and GPS Data Apps linked from the Map the files can be edited from the web UI
+Using the Tracker and GPS Data Apps linked from the Map the files can be edited from the web UI, additionally fixed points can be added using the UI.
 
 ## How to setup
 

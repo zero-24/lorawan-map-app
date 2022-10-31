@@ -61,5 +61,10 @@ $todaysGpsJson = json_encode((array) $todaysGpsData);
 
 // Write the JSON Data to the data folder
 $fileHelper->writeJsonFile('tracker_gpsdata', $json);
-$fileHelper->writeJsonFile(date("Ymd") . '_tracker_gpsdata', $todaysGpsJson);
+
+// Check whether the GPS data should be stored
+if (UPLINK_STORE_DATA === true)
+{
+    $fileHelper->writeJsonFile(date("Ymd") . '_tracker_gpsdata', $todaysGpsJson);
+}
 
