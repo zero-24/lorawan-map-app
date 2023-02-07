@@ -157,4 +157,21 @@ class TrackerGpsDataHelper
 
         return $storedGpsPointFileNames ? $storedGpsPointFileNames : [];
     }
+
+    /**
+     * Delete all tracker gps data
+     *
+     * @return  void
+     *
+     * @since   1.0
+     */
+    public function deleteAllGpsPoints()
+    {
+        $gpsData = $this->getGpsData();
+
+        foreach ($gpsData as $i => $gpsPoint)
+        {
+            $this->deleteGpsPoint($gpsPoint['device_id']);
+        }
+    }
 }
