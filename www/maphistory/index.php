@@ -28,7 +28,7 @@ foreach ($gpsData as $gpsPoint)
 // Fallback when there are no data get from the history file
 if (empty($points))
 {
-    $points[] = ['50.8070725023327','7.133824179895859'];
+    $points[] = [MARKER_FALLBACK_WHEN_NO_DATA_LATITUDE, MARKER_FALLBACK_WHEN_NO_DATA_LONGITUDE];
 }
 
 // Calculate the resfresh time for the markers

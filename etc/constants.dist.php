@@ -80,3 +80,7 @@ define('MARKER_ICON_ARRAY_SUGGESTION', [
     '8' => 'EVT 8',
     '9' => 'EVT 9',
 ]);
+
+// Fallback initial location when not tracker data is aviable
+define('MARKER_FALLBACK_WHEN_NO_DATA_LATITUDE', 50.8070725023327);
+define('MARKER_FALLBACK_WHEN_NO_DATA_LONGITUDE', 7.133824179895859);

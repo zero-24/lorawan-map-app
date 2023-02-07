@@ -20,6 +20,12 @@ foreach ($gpsData as $gpsPoint)
     $points[] = [$gpsPoint['latitude'], $gpsPoint['longitude']];
 }
 
+// Supply an fallback value for the initial GPS Data when nothing is aviable
+if (empty($points))
+{
+    $points[] = [MARKER_FALLBACK_WHEN_NO_DATA_LATITUDE, MARKER_FALLBACK_WHEN_NO_DATA_LONGITUDE];
+}
+
 // Calculate the resfresh time for the markers
 $markerRefresh = MARKER_REFRESH_SECONDS * 1000;
 
