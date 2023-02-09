@@ -55,7 +55,7 @@ define('MARKER_POPUP_HISTORY_TEXT_TEMPLATE', '<b>{deviceId}</b><br>Updated: {dat
 
 // The Marker Icons Suggestion
 define('MARKER_ICON_ARRAY_SUGGESTION', [
-    'tower-control' => 'Führungstelle',
+    'tower-observation' => 'Führungstelle',
     'car-side' => 'ELW',
     'tent' => 'UHS',
     'hospital' => 'Krankenhaus',
