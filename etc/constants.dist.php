@@ -69,6 +69,8 @@ define('MARKER_ICON_ARRAY_SUGGESTION', [
     'location-pin' => 'Sonderpin',
     'house' => 'Wache',
     'gas-pump' => 'Tankstelle',
+    'train' => 'Bahnhof',
+    'ticket' => 'Stadthalle',
     '0' => 'EVT 0',
     '1' => 'EVT 1',
     '2' => 'EVT 2',
