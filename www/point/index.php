@@ -61,9 +61,15 @@ header("content-security-policy: default-src 'self';");
                             <td><?php echo $point['title'] ?></td>
                             <td><i class="fa-solid fa-<?php echo $point['icon'] ?>"></i></td>
                             <td><?php echo $point['visibility'] == 'visible' || $point['visibility'] == '' ? 'Visible' : 'Hidden' ?></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['callsign'] ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['callsign'] ? $point['callsign'] : 'No Callsign' ?></td>
                             <td><?php echo $point['group'] ?></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $point['strength_leader'] . ' / ' . (int) $point['strength_groupleader'] . ' / ' . (int) $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>' ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                <?php if ($point['strength'] != 0): ?>
+                                    <?php echo $point['strength_leader'] . ' / ' . (int) $point['strength_groupleader'] . ' / ' . (int) $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>' ?>
+                                <?php else: ?>
+                                    <?php echo 'No strength set' ?>
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $point['point_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>

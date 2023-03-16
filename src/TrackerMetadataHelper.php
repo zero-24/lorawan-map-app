@@ -230,46 +230,25 @@ class TrackerMetadataHelper
             $errors['title'] = 'Title is mandatory';
         }
 
-        if (!$tracker['longtext'])
-        {
-            $isValid = false;
-            $errors['longtext'] = 'Longtext is mandatory';
-        }
-
-        if (!$tracker['callsign'])
-        {
-            $isValid = false;
-            $errors['callsign'] = 'Callsign is mandatory';
-        }
-
-        if (!$tracker['groupleader'])
-        {
-            $isValid = false;
-            $errors['groupleader'] = 'Groupleader is mandatory';
-        }
-
         if (!$tracker['strength_leader']
-            && is_int($tracker['strength_leader'])
-            && (int) $tracker['strength_leader'] !== 0)
+            && $point['strength_leader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_leader'] = 'The number of association strength_leaders and doctors are mandatory' . '<br>';
+            $errors['strength_leader'] = 'The number of association strength_leaders and doctors have to be a number if unknown set 0' . '<br>';
         }
 
         if (!$tracker['strength_groupleader']
-            && is_int($tracker['strength_groupleader'])
-            && $tracker['strength_groupleader'] !== 0)
+            && $point['strength_groupleader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_groupleader'] = 'The number of group and squad strength_leaders are mandatory'. '<br>';
+            $errors['strength_groupleader'] = 'The number of group and squad strength_leaders have to be a number if unknown set 0'. '<br>';
         }
 
         if (!$tracker['strength_helper']
-            && is_int($tracker['strength_helper'])
-            && (int) $tracker['strength_helper'] !== 0)
+            && $point['strength_groupleader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_helper'] = 'The number of strength_helpers are mandatory' . '<br>';
+            $errors['strength_helper'] = 'The number of strength_helpers have to be a number if unknown set 0' . '<br>';
         }
 
         if (!$tracker['icon'])
@@ -280,7 +259,10 @@ class TrackerMetadataHelper
         // End Of validation
 
         // Calculate the full strength
-        $tracker['strength'] = $tracker['strength_leader'] + $tracker['strength_groupleader'] + $tracker['strength_helper'];
+        if ($isValid)
+        {
+            $point['strength'] = $point['strength_leader'] + $point['strength_groupleader'] + $point['strength_helper'];
+        }
 
         return $isValid;
     }

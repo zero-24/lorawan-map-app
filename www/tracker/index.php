@@ -60,9 +60,15 @@ header("content-security-policy: default-src 'self';");
                             <td><?php echo $tracker['device_id'] ?></td>
                             <td><?php echo $tracker['title'] ?></td>
                             <td><i class="fa-solid fa-<?php echo $tracker['icon'] ?>"></i></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['callsign'] ?></td>
-                            <td><?php echo $tracker['groupleader'] ?></td>
-                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell"><?php echo $tracker['callsign'] ? $tracker['callsign'] : 'No Callsign' ?></td>
+                            <td><?php echo $tracker['groupleader'] ? $tracker['groupleader'] : 'No Groupleader' ?></td>
+                            <td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">
+                                <?php if ($tracker['strength'] != 0): ?>
+                                    <?php echo $tracker['strength_leader'] . ' / ' . (int) $tracker['strength_groupleader'] . ' / ' . (int) $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>' ?>
+                                <?php else: ?>
+                                    <?php echo 'No strength set' ?>
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <a href="actions/view.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-info">View</a>
                                 <a href="actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=<?php echo $tracker['device_id'] ?>" class="btn btn-sm btn-outline-secondary">Edit</a>

@@ -50,7 +50,20 @@ foreach ($gpsData as $gpsPoint)
             $popupText = str_replace('{longtext}', $tracker['longtext'], $popupText);
             $popupText = str_replace('{groupleader}', $tracker['groupleader'], $popupText);
             $popupText = str_replace('{callsign}', $tracker['callsign'], $popupText);
+
+            // Hide the strngth line when the strength is 0
+            if ($tracker['strength'] === 0)
+            {
+                $popupText = str_replace('{strength}', '', $popupText);
+            }
+
+            // When the {strength} tag is still there add the strength information
             $popupText = str_replace('{strength}', $tracker['strength_leader'] . ' / ' . $tracker['strength_groupleader'] . ' / ' . $tracker['strength_helper'] . ' // <b>' . $tracker['strength'] . '</b>', $popupText);
+
+            // Remove empty tags
+            $popupText = str_replace('<br><br><br><br>', '<br>', $popupText);
+            $popupText = str_replace('<br><br><br>', '<br>', $popupText);
+            $popupText = str_replace('<br><br>', '<br>', $popupText);
 
             $icon = $tracker['icon'];
 
@@ -91,7 +104,20 @@ foreach ($points as $point)
     $popupText = str_replace('{callsign}', $point['callsign'], $popupText);
     $popupText = str_replace('{group}', $point['group'], $popupText);
     $popupText = str_replace('{pointleader}', $point['pointleader'], $popupText);
+
+    // Hide the strngth line when the strength is 0
+    if ($point['strength'] === 0)
+    {
+        $popupText = str_replace('{strength}', '', $popupText);
+    }
+
+    // When the {strength} tag is still there add the strength information
     $popupText = str_replace('{strength}', $point['strength_leader'] . ' / ' . $point['strength_groupleader'] . ' / ' . $point['strength_helper'] . ' // <b>' . $point['strength'] . '</b>', $popupText);
+
+    // Remove empty tags
+    $popupText = str_replace('<br><br><br><br>', '<br>', $popupText);
+    $popupText = str_replace('<br><br><br>', '<br>', $popupText);
+    $popupText = str_replace('<br><br>', '<br>', $popupText);
 
     // Set the fixed points to black
     $updateColor = 'black';

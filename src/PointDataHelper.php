@@ -253,52 +253,25 @@ class PointDataHelper
             $errors['title'] = 'Title is mandatory and has to be a string';
         }
 
-        if (!$point['longtext'] || !is_string($point['longtext']))
-        {
-            $isValid = false;
-            $errors['longtext'] = 'Longtext is mandatory and has to be a string';
-        }
-
-        if (!$point['callsign'])
-        {
-            $isValid = false;
-            $errors['callsign'] = 'Callsign is mandatory';
-        }
-
-        if (!$point['callsign'])
-        {
-            $isValid = false;
-            $errors['callsign'] = 'Callsign is mandatory';
-        }
-
-        if (!$point['pointleader'])
-        {
-            $isValid = false;
-            $errors['pointleader'] = 'Groupleader is mandatory';
-        }
-
         if (!$point['strength_leader']
-            && is_int($point['strength_leader'])
-            && (int) $point['strength_leader'] !== 0)
+            && $point['strength_leader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_leader'] = 'The number of association strength_leaders and doctors are mandatory' . '<br>';
+            $errors['strength_leader'] = 'The number of association strength_leaders and doctors have to be a number if unknown set 0' . '<br>';
         }
 
         if (!$point['strength_groupleader']
-            && is_int($point['strength_groupleader'])
-            && $point['strength_groupleader'] !== 0)
+            && $point['strength_groupleader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_groupleader'] = 'The number of group and squad strength_leaders are mandatory'. '<br>';
+            $errors['strength_groupleader'] = 'The number of group and squad strength_leaders have to be a number if unknown set 0'. '<br>';
         }
 
         if (!$point['strength_helper']
-            && is_int($point['strength_helper'])
-            && (int) $point['strength_helper'] !== 0)
+            && $point['strength_groupleader'] !== '0')
         {
             $isValid = false;
-            $errors['strength_helper'] = 'The number of strength_helpers are mandatory' . '<br>';
+            $errors['strength_helper'] = 'The number of strength_helpers have to be a number if unknown set 0' . '<br>';
         }
 
         if (!$point['latitude'])
@@ -333,7 +306,10 @@ class PointDataHelper
         // End Of validation
 
         // Calculate the full strength
-        $point['strength'] = $point['strength_leader'] + $point['strength_groupleader'] + $point['strength_helper'];
+        if ($isValid)
+        {
+            $point['strength'] = $point['strength_leader'] + $point['strength_groupleader'] + $point['strength_helper'];
+        }
 
         return $isValid;
     }
