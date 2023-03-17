@@ -231,21 +231,21 @@ class TrackerMetadataHelper
         }
 
         if (!$tracker['strength_leader']
-            && $point['strength_leader'] !== '0')
+            && $tracker['strength_leader'] !== '0')
         {
             $isValid = false;
             $errors['strength_leader'] = 'The number of association strength_leaders and doctors have to be a number if unknown set 0' . '<br>';
         }
 
         if (!$tracker['strength_groupleader']
-            && $point['strength_groupleader'] !== '0')
+            && $tracker['strength_groupleader'] !== '0')
         {
             $isValid = false;
             $errors['strength_groupleader'] = 'The number of group and squad strength_leaders have to be a number if unknown set 0'. '<br>';
         }
 
         if (!$tracker['strength_helper']
-            && $point['strength_groupleader'] !== '0')
+            && $tracker['strength_groupleader'] !== '0')
         {
             $isValid = false;
             $errors['strength_helper'] = 'The number of strength_helpers have to be a number if unknown set 0' . '<br>';
