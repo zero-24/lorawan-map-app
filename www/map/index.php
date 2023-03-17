@@ -169,6 +169,14 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     // Focus on the the inital set of points
                     map.fitBounds(<?php echo json_encode($points); ?>);
 
+                    // Open point create page on right click, pass lat/lng and redirect back to the map when ready
+                    map.on('contextmenu', function(e)
+                    {
+                        var marker = new L.marker(e.latlng).addTo(map);
+                        var url = '../point/actions/create.php?site_secret=<?php echo SITE_SECRET ?>&lat=' + e.latlng.lat + '&lng=' + e.latlng.lng + '&return=map';
+                        window.open(url, '_blank').focus();
+                    });
+
                     /**
                     * Calls the markers api endpoint and sets based on that result the markers on the page
                     *
@@ -223,6 +231,14 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     });
 
                                     marker.device_id = deviceId;
+
+                                    // Open point edit page on right click and redirect back to the map when ready
+                                    marker.on('contextmenu', function(e)
+                                    {
+                                        var url = '../point/actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=' + this.device_id + '&return=map';
+                                        window.open(url, '_blank').focus();
+                                    });
+
                                     map.addLayer(marker);
                                     marker.bindPopup(popupText);
 

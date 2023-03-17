@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <h3>
-                <?php if ($point['point_id']): ?>
+                <?php if ($pointDataHelper->getPointById($point['point_id'])): ?>
                     Edit Point <b><?php echo $point['title'] ?></b>
                 <?php else : ?>
                     Create new Point

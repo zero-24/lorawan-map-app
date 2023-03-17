@@ -14,19 +14,19 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
 }
 
 $point = [
-    'point_id'             => '',
+    'point_id'             => $pointDataHelper->getNextPointId(),
     'title'                => '',
     'longtext'             => '',
     'callsign'             => '',
-    'latitude'             => '50.8070725023327',
-    'longitude'            => '7.133824179895859',
+    'latitude'             => $input->getString('lat', '50.8070725023327'),
+    'longitude'            => $input->getString('lng', '7.133824179895859'),
     'location'             => '',
     'visibility'           => '',
     'group'                => '',
     'pointleader'          => '',
-    'strength_leader'      => '',
-    'strength_groupleader' => '',
-    'strength_helper'      => '',
+    'strength_leader'      => '0',
+    'strength_groupleader' => '0',
+    'strength_helper'      => '0',
     'icon'                 => '',
 ];
 
@@ -61,6 +61,12 @@ if ($input->getMethod() === 'POST')
     if ($isValid)
     {
         $point = $pointDataHelper->createPoint($point);
+
+        if ($input->getString('return', false) === 'map')
+        {
+            header('Location: ../../map/index.php?site_secret=' . SITE_SECRET);
+            exit;
+        }
 
         header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }

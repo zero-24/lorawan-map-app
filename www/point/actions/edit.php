@@ -85,6 +85,13 @@ if ($input->getMethod() === 'POST')
     {
         $point = $pointDataHelper->editPoint($point, $pointId);
 
+        if ($input->getString('return', false) === 'map')
+        {
+            header('Location: ../../map/index.php?site_secret=' . SITE_SECRET);
+            exit;
+        }
+
+
         header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }
 }

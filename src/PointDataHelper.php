@@ -105,6 +105,28 @@ class PointDataHelper
     }
 
     /**
+     * Get next point id
+     *
+     * @return  array  List with all groups that have been setup already
+     *
+     * @since   1.0
+     */
+    public function getNextPointId()
+    {
+        $points = $this->getPoints();
+
+        foreach ($points as $point)
+        {
+            $lastId = $point['point_id'];
+        }
+
+        // Increase the last point Id by one
+        $lastId++;
+
+        return $lastId;
+    }
+
+    /**
      * Get one specific tracker datapoint from the text mapping file
      *
      * @param   string  $pointId  Tracker device ID
