@@ -212,11 +212,6 @@ class TrackerMetadataHelper
     {
         $isValid = true;
 
-        // Cast strength values to integer
-        $tracker['strength_leader']      = (int) $tracker['strength_leader'];
-        $tracker['strength_groupleader'] = (int) $tracker['strength_groupleader'];
-        $tracker['strength_helper']      = (int) $tracker['strength_helper'];
-
         // Start of validation
         if (!$tracker['device_id'] || ($type === 'create' && $this->getTrackerById($tracker['device_id'])))
         {
