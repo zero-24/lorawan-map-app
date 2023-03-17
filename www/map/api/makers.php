@@ -86,7 +86,7 @@ foreach ($gpsData as $gpsPoint)
     }
 
     // Add markers to the return array
-    $markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $updateColor, $icon];
+    $markers[] = [$gpsPoint['device_id'], $gpsPoint['latitude'], $gpsPoint['longitude'], $popupText, $updateColor, $icon, 'tracker'];
 }
 
 $points = $pointDataHelper->getPoints();
@@ -123,7 +123,7 @@ foreach ($points as $point)
     $updateColor = 'black';
 
     // Add markers to the return array
-    $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $updateColor, $point['icon']];
+    $markers[] = [$point['point_id'], $point['latitude'], $point['longitude'], $popupText, $updateColor, $point['icon'], 'point'];
 }
 
 // Output the json

@@ -62,6 +62,12 @@ if ($input->getMethod() === 'POST')
     {
         $tracker = $trackerMetadataHelper->editTracker($tracker, $deviceId);
 
+        if ($input->getString('return', false) === 'map')
+        {
+            header('Location: ../../map/index.php?site_secret=' . SITE_SECRET);
+            exit;
+        }
+
         header('Location: ../index.php?site_secret=' . SITE_SECRET);
     }
 }

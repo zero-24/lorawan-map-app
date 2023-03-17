@@ -215,6 +215,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                 {
                                     var markerUpdateColor = markers[i][4];
                                     var markerIconClass = markers[i][5];
+                                    var markerType = markers[i][6];
 
                                     var deviceId = markers[i][0];
                                     var lat = markers[i][1];
@@ -231,11 +232,12 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     });
 
                                     marker.device_id = deviceId;
+                                    marker.markerType = markerType;
 
                                     // Open point edit page on right click and redirect back to the map when ready
                                     marker.on('contextmenu', function(e)
                                     {
-                                        var url = '../point/actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=' + this.device_id + '&return=map';
+                                        var url = '../' + this.markerType + '/actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=' + this.device_id + '&return=map';
                                         window.open(url, '_self').focus();
                                     });
 

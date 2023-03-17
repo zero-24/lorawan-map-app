@@ -261,7 +261,7 @@ class TrackerMetadataHelper
         // Calculate the full strength
         if ($isValid)
         {
-            $point['strength'] = $point['strength_leader'] + $point['strength_groupleader'] + $point['strength_helper'];
+            $tracker['strength'] = $tracker['strength_leader'] + $tracker['strength_groupleader'] + $tracker['strength_helper'];
         }
 
         return $isValid;
