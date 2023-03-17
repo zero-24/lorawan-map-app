@@ -174,7 +174,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                     {
                         var marker = new L.marker(e.latlng).addTo(map);
                         var url = '../point/actions/create.php?site_secret=<?php echo SITE_SECRET ?>&lat=' + e.latlng.lat + '&lng=' + e.latlng.lng + '&return=map';
-                        window.open(url, '_blank').focus();
+                        window.open(url, '_self').focus();
                     });
 
                     /**
@@ -236,7 +236,7 @@ header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" 
                                     marker.on('contextmenu', function(e)
                                     {
                                         var url = '../point/actions/edit.php?site_secret=<?php echo SITE_SECRET ?>&id=' + this.device_id + '&return=map';
-                                        window.open(url, '_blank').focus();
+                                        window.open(url, '_self').focus();
                                     });
 
                                     map.addLayer(marker);
