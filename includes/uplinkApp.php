@@ -16,6 +16,7 @@ if (!file_exists(ROOT_PATH . '/vendor/autoload.php'))
 
 require ROOT_PATH . '/vendor/autoload.php';
 
+use Joomla\Http\HttpFactory;
 use Joomla\Input;
 use zero24\Helper\FileHelper;
 
@@ -25,3 +26,6 @@ $input = new Input\Input;
 $fileHelper = new FileHelper([
     'dataFolder' => ROOT_PATH . '/data',
 ]);
+
+// Add the http factory
+$http = HttpFactory::getHttp(['userAgent' => 'zero-24 DRK LoRaWAN Map App - v1']);

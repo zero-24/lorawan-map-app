@@ -68,3 +68,19 @@ if (UPLINK_STORE_DATA === true)
     $fileHelper->writeJsonFile(date("Ymd") . '_tracker_gpsdata', $todaysGpsJson);
 }
 
+// Check whether there is a upstram server to send data to
+if (defined(UPLINK_UPSTREAM_MAP_APP_API_URL) && !empty(UPLINK_UPSTREAM_MAP_APP_API_URL))
+{
+    // Send tracker data via curl to the upstream map
+    $apiURL = str_replace(['<id>', '<lat>', '<long>'], [$tracker->device_id, $tracker->latitude, $tracker->longitude], UPLINK_UPSTREAM_MAP_APP_API_URL);
+
+    try
+    {
+        $response = $http->get($apiURL);
+    }
+    catch (RuntimeException $e)
+    {
+        // Cant call remote api failed
+    }
+}
+

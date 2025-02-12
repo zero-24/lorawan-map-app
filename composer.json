@@ -10,7 +10,8 @@
         }
     },
     "require": {
-        "joomla/input": "~2.0"
+        "joomla/input": "~2.0",
+        "joomla/http": "~2.0"
     },
     "autoload": {
         "psr-4": {

@@ -14,6 +14,9 @@ define('UPLINK_SECRET', '');
 // The setting whether the data should be stored to be analysed later.
 define('UPLINK_STORE_DATA', false);
 
+// Add the upstream map API url, you can use <id>, <lat> and <long> as placeholders
+define('UPLINK_UPSTREAM_MAP_APP_API_URL', '');
+
 // The site secret to be passed to be allowed to access the page
 define('SITE_SECRET', '');
 
