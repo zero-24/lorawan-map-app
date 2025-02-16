@@ -69,7 +69,7 @@ if (UPLINK_STORE_DATA === true)
 }
 
 // Check whether there is a upstram server to send data to
-if (defined(UPLINK_UPSTREAM_MAP_APP_API_URL) && !empty(UPLINK_UPSTREAM_MAP_APP_API_URL))
+if (defined('UPLINK_UPSTREAM_MAP_APP_API_URL'))
 {
     // Send tracker data via curl to the upstream map
     $apiURL = str_replace(['<id>', '<lat>', '<long>'], [$tracker->device_id, $tracker->latitude, $tracker->longitude], UPLINK_UPSTREAM_MAP_APP_API_URL);
@@ -80,7 +80,7 @@ if (defined(UPLINK_UPSTREAM_MAP_APP_API_URL) && !empty(UPLINK_UPSTREAM_MAP_APP_A
     }
     catch (RuntimeException $e)
     {
-        // Cant call remote api failed
+        // Dont log any errors
     }
 }
 
