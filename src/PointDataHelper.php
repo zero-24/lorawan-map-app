@@ -290,7 +290,7 @@ class PointDataHelper
         }
 
         if (!$point['strength_helper']
-            && $point['strength_groupleader'] !== '0')
+            && $point['strength_helper'] !== '0')
         {
             $isValid = false;
             $errors['strength_helper'] = 'The number of strength_helpers have to be a number if unknown set 0' . '<br>';
