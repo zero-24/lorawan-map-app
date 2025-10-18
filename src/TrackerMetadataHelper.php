@@ -240,7 +240,7 @@ class TrackerMetadataHelper
         }
 
         if (!$tracker['strength_helper']
-            && $tracker['strength_groupleader'] !== '0')
+            && $tracker['strength_helper'] !== '0')
         {
             $isValid = false;
             $errors['strength_helper'] = 'The number of strength_helpers have to be a number if unknown set 0' . '<br>';
