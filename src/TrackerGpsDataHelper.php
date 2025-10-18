@@ -58,7 +58,36 @@ class TrackerGpsDataHelper
      */
     public function getGpsData()
     {
-        return $this->fileHelper->readJsonFile($this->fileName);
+        $gpsJsonFile = $this->fileHelper->readJsonFile($this->fileName);
+        $gpsData = [];
+
+        foreach ($gpsJsonFile as $gpsPoint)
+        {
+            // Skip invalid data
+            if ($gpsPoint['latitude'] === '-90' || $gpsPoint['longitude'] === '-100')
+            {
+                continue;
+            }
+
+            // Skip empty points
+            if (empty($gpsPoint['latitude']) || empty($gpsPoint['longitude']))
+            {
+                continue;
+            }
+
+            // Skip dublicate data
+            $lastGpsPoint = end($gpsData);
+
+            if ($gpsPoint['latitude'] === $lastGpsPoint['latitude'] || $gpsPoint['longitude'] === $lastGpsPoint['longitude'])
+            {
+                continue;
+            }
+
+            $gpsData[] = $gpsPoint;
+        }
+
+        return $gpsData;
+
     }
 
     /**

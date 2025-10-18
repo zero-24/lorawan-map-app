@@ -18,12 +18,6 @@ $markers = [];
 
 foreach ($gpsData as $gpsPoint)
 {
-    // Skip invalid data
-    if ($gpsPoint['latitude'] === '-90' || $gpsPoint['longitude'] === '-100')
-    {
-        continue;
-    }
-
     $popupText = MARKER_POPUP_HISTORY_TEXT_TEMPLATE;
     $popupText = str_replace('{deviceId}', $gpsPoint['device_id'], $popupText);
     $popupText = str_replace('{date}', $gpsPoint['date'], $popupText);
