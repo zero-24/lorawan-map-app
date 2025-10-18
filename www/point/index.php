@@ -14,7 +14,7 @@ if ($input->getString('site_secret', false) !== SITE_SECRET)
 }
 
 $points = $pointDataHelper->getPoints();
-header("content-security-policy: default-src 'self';");
+header("content-security-policy: default-src 'self'; frame-ancestors " . SITE_ALLOWED_FRAME . ";");
 ?>
 <html>
     <head>

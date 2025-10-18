@@ -1,5 +1,5 @@
 <?php $cspnonce = base64_encode(bin2hex(random_bytes(64))); ?>
-<?php header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' data: https://*.openstreetmap.org") ?>
+<?php header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' data: https://*.openstreetmap.org; frame-ancestors " . SITE_ALLOWED_FRAME . ";"); ?>
 <html>
     <head>
         <title><?php echo SITE_TITLE_POINT_APP ?></title>

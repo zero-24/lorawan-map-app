@@ -35,7 +35,7 @@ if (empty($points))
 $markerRefresh = MARKER_REFRESH_SECONDS * 1000;
 
 $cspnonce = base64_encode(bin2hex(random_bytes(64)));
-header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' data: https://*.openstreetmap.org")
+header("content-security-policy: default-src 'self'; script-src 'self' 'nonce-" . $cspnonce . "'; img-src 'self' data: https://*.openstreetmap.org; frame-ancestors " . SITE_ALLOWED_FRAME . ";");
 
 ?>
 <html>

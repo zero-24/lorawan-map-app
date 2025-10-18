@@ -41,6 +41,9 @@ define('SITE_TITLE_HISTORIC_MAP_APP', '');
 // Change the robots options
 define('SITE_ROBOTS', 'noindex, nofollow');
 
+// Allowed frames within the CSP frame-ancestors setting default 'none'
+define('SITE_ALLOWED_FRAME', "'none'");
+
 // The seconds how often the markers should be updated
 define('MARKER_REFRESH_SECONDS', 5);
 
