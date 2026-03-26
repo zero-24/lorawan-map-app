@@ -11,7 +11,7 @@
     # X-Content-Type nosniff
     Header always set X-Content-Type-Options nosniff
     # Referrer Policy
-    Header always set Referrer-Policy "no-referrer"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
     # Strict-Transport-Security
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
     # Cross-Origin-Opener-Policy
