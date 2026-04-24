@@ -76,11 +76,14 @@ class TrackerGpsDataHelper
             }
 
             // Skip dublicate data
-            $lastGpsPoint = end($gpsData);
-
-            if ($gpsPoint['latitude'] === $lastGpsPoint['latitude'] || $gpsPoint['longitude'] === $lastGpsPoint['longitude'])
+            if (!empty($gpsData))
             {
-                continue;
+                $lastGpsPoint = end($gpsData);
+
+                if ($gpsPoint['latitude'] === $lastGpsPoint['latitude'] || $gpsPoint['longitude'] === $lastGpsPoint['longitude'])
+                {
+                    continue;
+                }
             }
 
             $gpsData[] = $gpsPoint;

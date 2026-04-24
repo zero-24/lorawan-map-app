@@ -114,6 +114,7 @@ class PointDataHelper
     public function getNextPointId()
     {
         $points = $this->getPoints();
+        $lastId = 0;
 
         foreach ($points as $point)
         {

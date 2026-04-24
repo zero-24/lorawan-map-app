@@ -69,7 +69,7 @@ $errors = [
 
 $isValid = true;
 
-if ($input->getMethod() === 'POST')
+if (getenv('REQUEST_METHOD') === 'POST')
 {
     $point = array_merge($pointData, $point);
 
