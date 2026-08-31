@@ -14,7 +14,13 @@ $currentGpsData = $fileHelper->readJsonFile('tracker_gpsdata');
 $todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_tracker_gpsdata');
 
 // Read data
-$dataDeviceId = (int) $input->post->getInteger('id');
+$dataDeviceId = $input->post->getString('id', '');
+
+// When there is no ID skip this data
+if (empty($dataDeviceId))
+{
+    return;
+}
 
 // Loop through the current data
 foreach ($currentGpsData as $currentGpsPoint)
@@ -28,21 +34,21 @@ foreach ($currentGpsData as $currentGpsPoint)
 // Write new data to an stdClass object
 $tracker = new stdClass;
 $tracker->type = 'traccar';
-$tracker->latitude = $input->post->getString('lat');
-$tracker->longitude = $input->post->getString('lon');
-$tracker->altitude = $input->post->getString('altitude');
-$tracker->timestamp = $input->post->getString('timestamp');
-$tracker->accuracy = $input->post->getString('accuracy');
-$tracker->speed = $input->post->getString('speed');
-$tracker->batt = $input->post->getString('batt');
-$tracker->charge = $input->post->getString('charge');
+$tracker->latitude = $input->post->getString('lat', '');
+$tracker->longitude = $input->post->getString('lon', '');
+$tracker->altitude = $input->post->getString('altitude', '');
+$tracker->timestamp = $input->post->getString('timestamp', '');
+$tracker->accuracy = $input->post->getString('accuracy', '');
+$tracker->speed = $input->post->getString('speed', '');
+$tracker->batt = $input->post->getString('batt', '');
+$tracker->charge = $input->post->getString('charge', '');
 
 $tracker->date = date("d-m-Y");
 $tracker->time = date("H:i:s");
 $tracker->device_id = (string) $dataDeviceId;
 
 // We do not have any latitude nor longitude values -> we can not use that update
-if (!isset($tracker->latitude) || !isset($tracker->longitude))
+if (empty($tracker->latitude) || empty($tracker->longitude))
 {
     return;
 }
