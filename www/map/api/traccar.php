@@ -1,30 +1,40 @@
+
 <?php
 /**
- * Uplink entry point for the application
+ * traccar entry point for the application
  *
- * @copyright  Copyright (C) 2021 Tobias Zulauf. All rights reserved.
+ * @copyright  Copyright (C) 2026 Tobias Zulauf. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
 
-include '../../../includes/uplinkApp.php';
+include '../../../includes/traccarApp.php';
 
-if ($input->getString('uplink_secret', false) !== UPLINK_SECRET)
-{
-    exit;
-}
+file_put_contents('var_dump' . time() .'.txt', var_export($_POST, true));
+
+//array (
+//  'id' => '11210288',
+//  'lat' => '50.829342',
+//  'lon' => '7.1151128',
+//  'timestamp' => '1788133950',
+//  'accuracy' => '15.36299991607666',
+//  'altitude' => '112.7021484375',
+//  'speed' => '0.0',
+//  'batt' => '30',
+//  'charge' => 'false',
+//)
+
 
 // Read current gps data
 $currentGpsData = $fileHelper->readJsonFile('tracker_gpsdata');
 $todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_tracker_gpsdata');
 
 // Read data
-$dataUplinkMessages = (array) $input->json->get('uplink_message', array());
-$dataDevice = (array) $input->json->get('end_device_ids', array());
+$dataDeviceId = (int) $input->post->getInteger('id');
 
 // Loop through the current data
 foreach ($currentGpsData as $currentGpsPoint)
 {
-    if ($currentGpsPoint['device_id'] !== $dataDevice['device_id'])
+    if ($currentGpsPoint['device_id'] !== $dataDeviceId)
     {
         $gpsData[] = $currentGpsPoint;
     }
@@ -32,17 +42,19 @@ foreach ($currentGpsData as $currentGpsPoint)
 
 // Write new data to an stdClass object
 $tracker = new stdClass;
+$tracker->type = 'traccar';
+$tracker->latitude = $input->post->getString('lat');
+$tracker->longitude = $input->post->getString('lon');
+$tracker->altitude = $input->post->getString('altitude');
+$tracker->timestamp = $input->post->getString('timestamp');
+$tracker->accuracy = $input->post->getString('accuracy');
+$tracker->speed = $input->post->getString('speed');
+$tracker->batt = $input->post->getString('batt');
+$tracker->charge = $input->post->getString('charge');
 
-// Take the data from the payload
-foreach ($dataUplinkMessages['decoded_payload'] as $key => $value)
-{
-    $tracker->$key = $value;
-}
-
-$tracker->type = 'lorawan';
 $tracker->date = date("d-m-Y");
 $tracker->time = date("H:i:s");
-$tracker->device_id = $dataDevice['device_id'];
+$tracker->device_id = $dataDeviceId;
 
 // We do not have any latitude nor longitude values -> we can not use that update
 if (!isset($tracker->latitude) || !isset($tracker->longitude))
@@ -84,4 +96,3 @@ if (defined('UPLINK_UPSTREAM_MAP_APP_API_URL'))
         // Dont log any errors
     }
 }
-
