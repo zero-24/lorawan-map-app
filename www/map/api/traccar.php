@@ -39,7 +39,7 @@ $tracker->charge = $input->post->getString('charge');
 
 $tracker->date = date("d-m-Y");
 $tracker->time = date("H:i:s");
-$tracker->device_id = $dataDeviceId;
+$tracker->device_id = (string) $dataDeviceId;
 
 // We do not have any latitude nor longitude values -> we can not use that update
 if (!isset($tracker->latitude) || !isset($tracker->longitude))
