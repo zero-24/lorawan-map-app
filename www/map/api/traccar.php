@@ -9,21 +9,6 @@
 
 include '../../../includes/traccarApp.php';
 
-file_put_contents('var_dump' . time() .'.txt', var_export($_POST, true));
-
-//array (
-//  'id' => '11210288',
-//  'lat' => '50.829342',
-//  'lon' => '7.1151128',
-//  'timestamp' => '1788133950',
-//  'accuracy' => '15.36299991607666',
-//  'altitude' => '112.7021484375',
-//  'speed' => '0.0',
-//  'batt' => '30',
-//  'charge' => 'false',
-//)
-
-
 // Read current gps data
 $currentGpsData = $fileHelper->readJsonFile('tracker_gpsdata');
 $todaysGpsData  = $fileHelper->readJsonFile(date("Ymd") . '_tracker_gpsdata');
